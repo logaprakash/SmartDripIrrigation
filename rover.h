@@ -9,8 +9,10 @@
 
 int pin1,pin2,pin3;
 
-void motor_init(){
-  
+void motor_init(int p1,p2,p3){
+  pin1=p1;
+  pin2=p2;
+  pin3=p3;
 }
 
 void forward(int duration){
@@ -28,4 +30,3 @@ void left(int duration){
 void right(int duration){
   
 }
-
