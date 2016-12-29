@@ -25,7 +25,10 @@ void forward(int duration){
 }
 
 void backward(int duration){
-
+  digitalWrite(input1,LOW);
+  digitalWrite(input2,HIGH);
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,HIGH);
 }
 
 void left(int duration){
