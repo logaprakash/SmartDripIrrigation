@@ -69,3 +69,16 @@ void right(int duration){
   
   delay(duration);
 }
+
+void rest(int duration){
+  
+  //Left Motor
+  digitalWrite(input1,LOW);
+  digitalWrite(input2,LOW);
+
+  //Right Motor
+  digitalWrite(input3,LOW);
+  digitalWrite(input4,LOW);
+  
+  delay(duration);
+}
