@@ -1,18 +1,18 @@
-/* pin3 for start and stop of rover (1 for action mode and 0 for rest mode)
 
-   11 - forward
-   10 - left
-   01 - right
-   00 - backward
+/* Four pin rover control
+ * Functions - motor_init,forward,backward,left,right
+ * Four pins are connected to HG7881 (L9110S) Dual Channel Motor Driver Module
+ * HG7881 (L9110S) Dual Channel Motor Driver Module will further control the rover
+ */
 
-*/
 
-int pin1,pin2,pin3;
+int input1,input2,input3,input4;
 
-void motor_init(int p1,p2,p3){
-  pin1=p1;
-  pin2=p2;
-  pin3=p3;
+void motor_init(int pin1,pin2,pin3,pin4){
+  input1=pin1;
+  input2=pin2;
+  input3=pin3;
+  input4=pin4;  
 }
 
 void forward(int duration){
