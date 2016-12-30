@@ -15,8 +15,8 @@
   <li> 30th Dec 2016 - Wifi header and Time header added (Get Current time function, WiFi functions - Tested OK)
   
 <h2>Team members</h2>
-<li><a href="https://github.com/logaprakash">Logaprakash Raju</a>
-<li><a href="#">Deep Parikh</a>
-<li><a href="#">Rm.Rama Chidambaram</a>
-<li><a href="#">Rohan Shrivastava</a>
-<li><a href="https://github.com/raaghavmehta">Raaghav Mehta</a>
+<li><a href="https://github.com/logaprakash" target="_blank">Logaprakash Raju</a>
+<li><a href="#" target="_blank">Deep Parikh</a>
+<li><a href="#" target="_blank">Rm.Rama Chidambaram</a>
+<li><a href="#" target="_blank">Rohan Shrivastava</a>
+<li><a href="https://github.com/raaghavmehta" target="_blank">Raaghav Mehta</a>
