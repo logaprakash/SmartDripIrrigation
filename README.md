@@ -12,6 +12,7 @@
   <li> 27th Dec 2016 - GitHub Repo started 
   <li> 28th Dec 2016 - Testing board header added
   <li> 29th Dec 2016 - Rover header added 
+  <li> 30th Dec 2016 - wifi header and time header added (get Current time function - Tested OK)
   
 <h2>Team members</h2>
 <li><a href="https://github.com/logaprakash">Logaprakash Raju</a>
