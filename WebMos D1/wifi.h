@@ -19,3 +19,30 @@ void initWifi(char* ssid, char* password) {
 }
 
 
+void client_available(){
+  client = server.available();
+  while(!client){
+  }
+}
+
+void client_data_available(){
+  while(!client.available()){
+    delay(1);
+  }
+}
+
+String client_request(){
+ return client.readStringUntil('\r'); 
+}
+
+void client_flush(){
+  client.flush();
+}
+
+void client_print(String msg){
+  client.print(msg);
+}
+void client_println(String msg){
+  client.println(msg);
+}
+
