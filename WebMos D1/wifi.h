@@ -18,7 +18,14 @@ void initWifi(char* ssid, char* password) {
   delay(500);
 }
 
+void server_begin(){
+  server.begin();
+}
 
+IPAddress local_ip(){
+  return WiFi.localIP();
+  }
+  
 void client_available(){
   client = server.available();
   while(!client){
