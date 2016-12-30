@@ -1,4 +1,4 @@
-#include "wifi.h";
+#include "wifi.h"
 
 String getTime() {
   Serial.begin(115200);
