@@ -11,9 +11,13 @@
             android:icon="@drawable/ic_menu_send"
             android:title="Edit Path" />
             <item
-                android:id="@+id/action_settings"
+                android:id="@+id/roverSettings"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Settings" />
+                android:title="Rover Settings" />
         </menu>
     </item>
+    <item
+        android:id="@+id/logOut"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Log Out" />
 </menu>
