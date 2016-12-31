@@ -13,6 +13,7 @@
   <li> 28th Dec 2016 - Testing board header added (Tested board WebMos D1 with ESP8266 - Tested OK)
   <li> 29th Dec 2016 - Rover header added (Not Tested Yet)
   <li> 30th Dec 2016 - Wifi header and Time header added (Get Current time function, WiFi functions - Tested OK)
+  <li> 31th Dec 2016 - Android bulid created with minSDK (Kikat 4.4)
   
 <h2>Team members</h2>
 <li><a href="https://github.com/logaprakash" target="_blank">Logaprakash Raju</a>
