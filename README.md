@@ -16,8 +16,13 @@
 <li><a href="https://github.com/raaghavmehta" target="_blank">Raaghav Mehta</a>
 
 <h2>TimeLine:</h2>
-  <li> 27th Dec 2016 - GitHub Repo started 
-  <li> 28th Dec 2016 - Testing board header added (Tested board WebMos D1 with ESP8266 - Tested OK)
-  <li> 29th Dec 2016 - Rover header added (Not Tested Yet)
-  <li> 30th Dec 2016 - Wifi header and Time header added (Get Current time function, WiFi functions - Tested OK)
-  <li> 31th Dec 2016 - Android bulid created with minSDK (Kikat 4.4)
+<p><b><li> 27th Dec 2016 :</b> 
+GitHub Repo started by Logaprakash Raju</p>
+<p><b><li> 28th Dec 2016 :</b>  
+Testing board header added (Tested board WebMos D1 with ESP8266 - Tested OK) by Logaprakash Raju</p>
+<p><b><li> 29th Dec 2016:</b>  
+Rover header added (Not Tested Yet) by Logaprakash Raju</p>
+<p><b><li> 30th Dec 2016:</b>
+Wifi header and Time header added (Get Current time function, WiFi functions - Tested OK) by Logaprakash Raju</p>
+<p><b><li> 31th Dec 2016:</b>
+Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju</p>
