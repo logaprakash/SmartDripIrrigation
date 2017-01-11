@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.liveData) {
 
-        } else if (id == R.id.editPath) {
+        } else if (id == R.id.simulate) {
 
         } else if (id == R.id.roverSettings) {
 
