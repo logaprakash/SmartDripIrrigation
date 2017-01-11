@@ -5,19 +5,19 @@
             <item
                 android:id="@+id/liveData"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Live Data" />
+                android:title="@string/liveData" />
             <item
-            android:id="@+id/editPath"
+            android:id="@+id/simulate"
             android:icon="@drawable/ic_menu_send"
-            android:title="Edit Path" />
+            android:title="@string/simulate" />
             <item
                 android:id="@+id/roverSettings"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Rover Settings" />
+                android:title="@string/roverSettings" />
         </menu>
     </item>
     <item
         android:id="@+id/logOut"
         android:icon="@drawable/ic_menu_send"
-        android:title="Log Out" />
+        android:title="@string/logOut" />
 </menu>
