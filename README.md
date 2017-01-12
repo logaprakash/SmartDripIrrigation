@@ -21,3 +21,5 @@
 <b><li> 29th Dec 2016 :</b> Rover header added (Not Tested Yet) by Logaprakash Raju
 <b><li> 30th Dec 2016 :</b> Wifi and Time header added (Time and WiFi functions - Tested OK) by Logaprakash Raju
 <b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
+<b><li> 11th Jan 2017 :</b> Android bulid Updated by Logaprakash Raju
+
