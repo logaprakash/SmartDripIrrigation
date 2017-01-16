@@ -1,5 +1,6 @@
 package alpha.smartdripirrigation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.liveData) {
 
         } else if (id == R.id.simulate) {
-
+            Intent i = new Intent(getApplicationContext(), simulate.class);
+            startActivity(i);
         } else if (id == R.id.roverSettings) {
 
         }
