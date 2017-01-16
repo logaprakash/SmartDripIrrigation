@@ -10,4 +10,6 @@
     <string name="roverSettings">Rover Settings</string>
     <string name="logOut">Log Out</string>
 
+    <!--simulate-->
+    <string name="fetch">Fetch</string>
 </resources>
