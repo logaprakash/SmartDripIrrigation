@@ -10,55 +10,67 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.simulate">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        android:src="@drawable/forward"
-        android:id="@+id/forward"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
     <Button
         android:text="@string/fetch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@android:color/black"
         android:textColor="@android:color/white"
-        android:id="@+id/button5"
-        android:layout_above="@+id/backward"
+        android:id="@+id/fetch"
+        android:layout_centerHorizontal="true"
+        android:layout_alignTop="@+id/right"
+        android:layout_alignBottom="@+id/left" />
+
+    <ImageButton
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/left"
+        android:src="@drawable/left"
+        android:background="@android:color/black"
+        android:layout_marginEnd="24dp"
+        android:layout_alignTop="@+id/right"
+        android:layout_toStartOf="@+id/fetch" />
+
+    <ImageButton
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/backward"
+        android:src="@drawable/backward"
+        android:background="@android:color/black"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/right"
         android:layout_centerHorizontal="true" />
 
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="@drawable/forward"
+        android:id="@+id/forward"
+        android:background="@android:color/black"
+        android:layout_marginBottom="24dp"
+        android:layout_above="@+id/fetch"
+        android:layout_alignStart="@+id/backward" />
+
+    <ImageButton
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:id="@+id/right"
         android:src="@drawable/right"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_marginEnd="45dp"
-        android:layout_alignBottom="@+id/button5"
-        android:layout_alignParentEnd="true" />
+        android:background="@android:color/black"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/fetch"
+        android:layout_marginStart="24dp" />
 
-    <ImageButton
+    <Button
+        android:text="@string/endSimulate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:id="@+id/left"
-        android:src="@drawable/left"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_below="@+id/forward"
-        android:layout_toStartOf="@+id/button5"
-        android:layout_marginEnd="45dp" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/backward"
-        android:src="@drawable/backward"
-        android:background="@android:color/holo_blue_dark"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/left"
-        android:layout_alignStart="@+id/forward" />
+        android:layout_below="@+id/backward"
+        android:layout_marginTop="24dp"
+        android:id="@+id/endSimulate"
+        android:background="@android:color/black"
+        android:textColor="@android:color/white"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

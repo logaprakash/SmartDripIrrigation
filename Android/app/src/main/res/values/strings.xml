@@ -12,4 +12,5 @@
 
     <!--simulate-->
     <string name="fetch">Fetch</string>
+    <string name="endSimulate">End Simulate</string>
 </resources>
