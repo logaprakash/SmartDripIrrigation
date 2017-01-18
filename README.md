@@ -16,12 +16,14 @@
 <li><a href="https://github.com/raaghavmehta" target="_blank">Raaghav Mehta</a>
 
 <h2>TimeLine:</h2>
-<h4>Webmos:</h4>
+<h3>Webmos:</h3>
 <b><li> 27th Dec 2016 :</b> GitHub Repo started by Logaprakash Raju
 <b><li> 28th Dec 2016 :</b> Testing board header added (Tested board WebMos D1 with ESP8266 - Tested OK) by Logaprakash Raju
 <b><li> 29th Dec 2016 :</b> Rover header added (Not Tested Yet) by Logaprakash Raju
 <b><li> 30th Dec 2016 :</b> Wifi and Time header added (Time and WiFi functions - Tested OK) by Logaprakash Raju
-<h4>Android:</h4>
-<b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
-<b><li> 11th Jan 2017 :</b> Simulate page added by Logaprakash Raju
 
+<h3>Android:</h3>
+<b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
+<b><li> 11th Jan 2017 :</b> Basic UI added by Logaprakash Raju
+<b><li> 14th Jan 2017 :</b> Simulate page added by Logaprakash Raju
+<b><li> 17th Jan 2017 :</b> Icons added by Logaprakash Raju
