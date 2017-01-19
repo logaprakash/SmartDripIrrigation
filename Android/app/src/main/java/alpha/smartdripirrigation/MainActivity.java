@@ -82,12 +82,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.liveData) {
+        if (id == R.id.liveFeed) {
 
         } else if (id == R.id.simulate) {
             Intent i = new Intent(getApplicationContext(), simulate.class);
             startActivity(i);
-        } else if (id == R.id.roverSettings) {
+        } else if (id == R.id.addRover) {
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
