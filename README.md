@@ -27,3 +27,4 @@
 <b><li> 11th Jan 2017 :</b> Basic UI added by Logaprakash Raju
 <b><li> 14th Jan 2017 :</b> Simulate page added by Logaprakash Raju
 <b><li> 17th Jan 2017 :</b> Icons added by Logaprakash Raju
+<b><li> 18th Jan 2017 :</b> Added listView and updated colors by Logaprakash Raju
