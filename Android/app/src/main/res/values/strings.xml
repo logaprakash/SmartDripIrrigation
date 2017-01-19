@@ -13,4 +13,5 @@
     <!--simulate-->
     <string name="fetch">Fetch</string>
     <string name="endSimulate">End Simulate</string>
+    <string name="title_activity_simulate1">simulate1</string>
 </resources>
