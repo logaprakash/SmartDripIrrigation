@@ -10,67 +10,77 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.simulate">
 
+    <TextView
+        android:text="Rover ID:301705"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/left"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:id="@+id/textView2" />
+
+    <Button
+        android:text="@string/fetch"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:background="@color/black"
+        android:textColor="@android:color/white"
+        android:id="@+id/fetch"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/forward"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/left"
+        android:src="@drawable/left"
+        android:background="@color/black"
+        android:layout_alignTop="@+id/fetch"
+        android:layout_toStartOf="@+id/fetch"
+        android:layout_marginEnd="26dp" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/right"
+        android:src="@drawable/right"
+        android:background="@color/black"
+        android:layout_alignTop="@+id/fetch"
+        android:layout_toEndOf="@+id/fetch"
+        android:layout_marginStart="26dp" />
+
     <Button
         android:text="@string/endSimulate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/endSimulate"
-        android:background="@color/colorPrimary"
+        android:background="@color/black"
         android:textColor="@android:color/white"
-        android:layout_below="@+id/backward"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="70dp"
-        android:layout_alignEnd="@+id/right" />
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:id="@+id/backward"
-        android:src="@drawable/backward"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/fetch"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:id="@+id/right"
-        android:src="@drawable/right"
-        android:background="@color/colorPrimary"
-        android:layout_above="@+id/backward"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="18dp" />
-
-    <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:id="@+id/left"
-        android:src="@drawable/left"
-        android:background="@color/colorPrimary"
-        android:layout_alignTop="@+id/fetch"
-        android:layout_alignStart="@+id/endSimulate" />
-
-    <Button
-        android:text="@string/fetch"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:background="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:id="@+id/fetch"
-        android:layout_marginTop="54dp"
-        android:layout_below="@+id/forward"
-        android:layout_centerHorizontal="true" />
-
-    <ImageButton
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:src="@drawable/forward"
         android:id="@+id/forward"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentTop="true"
+        android:background="@color/black"
+        android:layout_marginTop="82dp"
+        android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/backward" />
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/backward"
+        android:src="@drawable/backward"
+        android:background="@color/black"
+        android:layout_marginTop="32dp"
+        android:layout_below="@+id/fetch"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
