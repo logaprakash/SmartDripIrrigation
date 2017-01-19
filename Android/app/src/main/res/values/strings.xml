@@ -5,13 +5,12 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--Navigation Menu-->
-    <string name="liveData">Live Data</string>
+    <string name="liveFeed">Live Feed</string>
     <string name="simulate">Simulate</string>
-    <string name="roverSettings">Rover Settings</string>
+    <string name="addRover">Add Rover</string>
     <string name="logOut">Log Out</string>
 
     <!--simulate-->
     <string name="fetch">Fetch</string>
     <string name="endSimulate">End Simulate</string>
-    <string name="title_activity_simulate1">simulate1</string>
 </resources>
