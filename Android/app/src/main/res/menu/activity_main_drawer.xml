@@ -8,7 +8,7 @@
                 android:title="@string/liveData" />
             <item
             android:id="@+id/simulate"
-            android:icon="@drawable/ic_menu_send"
+            android:icon="@drawable/simulate"
             android:title="@string/simulate" />
             <item
                 android:id="@+id/roverSettings"
