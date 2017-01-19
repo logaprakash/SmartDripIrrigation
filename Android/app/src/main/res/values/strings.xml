@@ -5,6 +5,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <!--Navigation Menu-->
+    <string name="menu">Menu</string>
     <string name="liveFeed">Live Feed</string>
     <string name="simulate">Simulate</string>
     <string name="addRover">Add Rover</string>
