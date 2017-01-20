@@ -1,7 +1,7 @@
 #Smart Drip Irrigation using IOT 
 
 <h2>Abstract</h2>
-   <p>Designing a rover which senses the moisture of the soil and switches ON the drip irrigation system if required. The whole system will be based on IOT (Controlled and monitored by android app or webapp). The rover essentially will have the map of the farm stored inside it or user can even update the path through the android app or webapp. Wherever it moves in the farm the irrigation system will be switch ON or OFF based on its location and requirement of irrigation. Final stats of everyday will be updated live in android app or webapp for user display</p>
+   <p>A Smart rover with Camera and Moisture sensor - It senses the moisture of the soil near the plant and send a signal to respective drip irrigation system if exceeds the threshold. It notifies the user when the plant faces any kind of disease by taking an image of plant and process it with previous processed data of the plant (Digital Image Processing). The whole system will be based on IoT. Every sensor data and processed image data of plant will be stored in cloud. Rover is controlled and monitored by an android app (Local/Remote). The rover essentially will fetch the path of the farm stored which is stored in the cloud which is pre - simulated by user using android app once which can also be edited or modified later.</p>
    
 <h2>Components</h2>
   <li>WebMos D1 with ESP8266
