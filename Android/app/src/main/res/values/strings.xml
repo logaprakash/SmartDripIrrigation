@@ -10,7 +10,7 @@
     <string name="liveFeed">Live Feed</string>
     <string name="simulate">Simulate</string>
 
-    <string name="viewRover">View Rover</string>
+    <string name="viewRover">View rovers</string>
     <string name="addRover">Add Rover</string>
     <string name="deleteRover">Delete Rover</string>
     <string name="logOut">Log Out</string>
