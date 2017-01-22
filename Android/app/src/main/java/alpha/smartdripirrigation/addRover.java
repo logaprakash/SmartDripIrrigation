@@ -1,7 +1,9 @@
 package alpha.smartdripirrigation;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -64,7 +66,7 @@ public class addRover extends AppCompatActivity {
         addRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String filename = "rovers";
+                /*String filename = "rovers";
                 String string = roverName.getText().toString() + "$" +ip.getText().toString() + "\n"  ;
                 FileOutputStream outputStream;
 
@@ -91,11 +93,25 @@ public class addRover extends AppCompatActivity {
                     catch (IOException e) {
                         //You'll need to add proper error handling here
                     }
+*/
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
 
-                    onBackPressed();
+
+                    builder.setMessage(R.string.add_rover_dialog_message)
+                            .setTitle(R.string.add_rover_dialog_title);
+
+                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            onBackPressed();
+                        }
+                    });
+
+
+                   builder.create();
+/*
                 } catch (Exception e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         });
 
