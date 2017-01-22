@@ -14,7 +14,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="phone"
         android:ems="10"
         android:id="@+id/ip"
         android:hint="@string/ipAddress"
@@ -31,7 +31,8 @@
         android:id="@+id/roverName"
         android:layout_marginBottom="23dp"
         android:layout_above="@+id/ip"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/addRover"
@@ -42,5 +43,6 @@
         android:layout_marginTop="45dp"
         android:id="@+id/addRoverBtn"
         android:layout_below="@+id/ip"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 </RelativeLayout>
