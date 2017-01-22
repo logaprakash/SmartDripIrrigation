@@ -28,7 +28,9 @@
         <activity
             android:name=".simulate"
             android:label="@string/simulate" />
-        <activity android:name=".addRover"></activity>
+        <activity
+            android:name=".addRover"
+            android:label="@string/addRover"/>
     </application>
 
 </manifest>
