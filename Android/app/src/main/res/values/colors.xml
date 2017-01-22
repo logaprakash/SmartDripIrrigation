@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--App-->
     <color name="colorPrimary">#044f0e</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#053e0c</color>
+    <color name="btnBackground">#044f0e</color>
+    <color name="btnTextColor">#ffffff</color>
+
+    <!--Simulate-->
     <color name="simulateObjectBackground">#053e0c</color>
     <color name="simulateObjectForeground">#ffffff</color>
+
+
+
 </resources>
