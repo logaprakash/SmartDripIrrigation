@@ -85,10 +85,10 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.liveFeed) {
 
         } else if (id == R.id.simulate) {
-            Intent i = new Intent(getApplicationContext(), simulate.class);
+            Intent i = new Intent(MainActivity.this, simulate.class);
             startActivity(i);
         } else if (id == R.id.addRover) {
-            Intent i = new Intent(getApplicationContext(), addRover.class);
+            Intent i = new Intent(MainActivity.this, addRover.class);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
