@@ -17,7 +17,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/ip"
-        android:text="@string/ipAddress"
+        android:hint="@string/ipAddress"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/roverName"
         android:layout_alignEnd="@+id/roverName" />
@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="@string/roverName"
+        android:hint="@string/roverName"
         android:ems="10"
         android:id="@+id/roverName"
         android:layout_marginBottom="23dp"
