@@ -96,6 +96,8 @@ public class addRover extends AppCompatActivity {
                                     finish();
                                 }
                             });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
                             bool = false ;
                             break;
                         }
@@ -110,6 +112,8 @@ public class addRover extends AppCompatActivity {
                                     finish();
                                 }
                             });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
                             bool = false ;
                             break;
                         }
@@ -124,6 +128,8 @@ public class addRover extends AppCompatActivity {
                                     finish();
                                 }
                             });
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
                             bool = false ;
                             break;
                         }
@@ -143,19 +149,19 @@ public class addRover extends AppCompatActivity {
 
                         builder.setMessage(R.string.add_rover_dialog_message)
                                 .setTitle(R.string.add_rover_dialog_title);
-
                         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 onBackPressed();
                             }
                         });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+
             }
         });
 
