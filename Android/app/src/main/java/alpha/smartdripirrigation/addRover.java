@@ -95,8 +95,7 @@ public class addRover extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                 }
                             });
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
+
                             bool = false ;
                             break;
                         }
@@ -110,8 +109,7 @@ public class addRover extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                 }
                             });
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
+
                             bool = false ;
                             break;
                         }
@@ -125,8 +123,7 @@ public class addRover extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                 }
                             });
-                            AlertDialog alertDialog = builder.create();
-                            alertDialog.show();
+
                             bool = false ;
                             break;
                         }
@@ -151,13 +148,15 @@ public class addRover extends AppCompatActivity {
                                 onBackPressed();
                             }
                         });
-                        AlertDialog alertDialog = builder.create();
-                        alertDialog.show();
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
+
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 
             }
         });
