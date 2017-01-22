@@ -86,14 +86,13 @@ public class addRover extends AppCompatActivity {
                     while ((line = br.readLine()) != null) {
                         String[] separated = line.split("\\$");
 
-                        if(name == separated[0] && IP == separated[1])
+                        if(name.equals(separated[0]) && IP.equals(separated[1]))
                         {
                             builder.setMessage("Both Rover name and IP has to be unique !!!")
                                     .setTitle("Already exist");
 
                             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();
@@ -102,14 +101,13 @@ public class addRover extends AppCompatActivity {
                             break;
                         }
 
-                        else if(name == separated[0])
+                        else if(name.equals(separated[0]))
                         {
                             builder.setMessage("Rover name has to be unique !!!")
                                     .setTitle("Already exist");
 
                             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();
@@ -118,14 +116,13 @@ public class addRover extends AppCompatActivity {
                             break;
                         }
 
-                        else if(IP == separated[1])
+                        else if(IP.equals(separated[1]))
                         {
                             builder.setMessage("IP has to be unique !!!")
                                     .setTitle("Already exist");
 
                             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    finish();
                                 }
                             });
                             AlertDialog alertDialog = builder.create();
