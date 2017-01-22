@@ -94,7 +94,7 @@ public class addRover extends AppCompatActivity {
                         //You'll need to add proper error handling here
                     }
 */
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                    AlertDialog.Builder builder = new AlertDialog.Builder(addRover.this);
 
 
                     builder.setMessage(R.string.add_rover_dialog_message)
@@ -107,7 +107,8 @@ public class addRover extends AppCompatActivity {
                     });
 
 
-                   builder.create();
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
 /*
                 } catch (Exception e) {
                     e.printStackTrace();
