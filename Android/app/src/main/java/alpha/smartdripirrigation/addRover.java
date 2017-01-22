@@ -66,53 +66,96 @@ public class addRover extends AppCompatActivity {
         addRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*String filename = "rovers";
-                String string = roverName.getText().toString() + "$" +ip.getText().toString() + "\n"  ;
+                String filename = "rovers";
+
+                String name = roverName.getText().toString();
+                String IP = ip.getText().toString();
+
+                String temp = name + "$" +IP + "\n"  ;
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(addRover.this);
+
                 FileOutputStream outputStream;
+                File file = new File(getApplicationContext().getFilesDir(), filename);
+
+                boolean bool = true;
 
                 try {
-                    outputStream = openFileOutput(filename, MODE_APPEND);
-                    outputStream.write(string.getBytes());
-                    outputStream.close();
-                    File file = new File(getApplicationContext().getFilesDir(), filename);
+                    BufferedReader br = new BufferedReader(new FileReader(file));
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        String[] separated = line.split("\\$");
 
-                    //Read text from file
-                    StringBuilder text = new StringBuilder();
+                        if(name == separated[0] && IP == separated[1])
+                        {
+                            builder.setMessage("Both Rover name and IP has to be unique !!!")
+                                    .setTitle("Already exist");
 
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                }
+                            });
+                            bool = false ;
+                            break;
+                        }
+
+                        else if(name == separated[0])
+                        {
+                            builder.setMessage("Rover name has to be unique !!!")
+                                    .setTitle("Already exist");
+
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                }
+                            });
+                            bool = false ;
+                            break;
+                        }
+
+                        else if(IP == separated[1])
+                        {
+                            builder.setMessage("IP has to be unique !!!")
+                                    .setTitle("Already exist");
+
+                            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    finish();
+                                }
+                            });
+                            bool = false ;
+                            break;
+                        }
+                        }
+
+                    br.close();
+                }
+                catch (IOException e) {
+                    //You'll need to add proper error handling here
+                }
+                if(bool)
+                {
                     try {
-                        BufferedReader br = new BufferedReader(new FileReader(file));
-                        String line;
+                        outputStream = openFileOutput(filename, MODE_APPEND);
+                        outputStream.write(temp.getBytes());
+                        outputStream.close();
 
-                        while ((line = br.readLine()) != null) {
-                            String[] separated = line.split("\\$");
-                            Log.e("Name:",separated[0]);
-                            Log.e("IP:",separated[1]);
-                        }
-                        br.close();
+                        builder.setMessage(R.string.add_rover_dialog_message)
+                                .setTitle(R.string.add_rover_dialog_title);
+
+                        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                onBackPressed();
+                            }
+                        });
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
-                    catch (IOException e) {
-                        //You'll need to add proper error handling here
-                    }
-*/
-                    AlertDialog.Builder builder = new AlertDialog.Builder(addRover.this);
-
-
-                    builder.setMessage(R.string.add_rover_dialog_message)
-                            .setTitle(R.string.add_rover_dialog_title);
-
-                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            onBackPressed();
-                        }
-                    });
-
-
+                }
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
-/*
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }*/
             }
         });
 
