@@ -17,28 +17,30 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/ip"
-        android:text="IP address"
+        android:text="@string/ipAddress"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/roverName"
         android:layout_alignEnd="@+id/roverName" />
-
-    <Button
-        android:text="@string/addRover"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:id="@+id/addRoverBtn"
-        android:layout_below="@+id/ip"
-        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
-        android:text="Name of the rover"
+        android:text="@string/roverName"
         android:ems="10"
         android:id="@+id/roverName"
         android:layout_marginBottom="23dp"
         android:layout_above="@+id/ip"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/addRover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:layout_marginTop="45dp"
+        android:id="@+id/addRoverBtn"
+        android:layout_below="@+id/ip"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
