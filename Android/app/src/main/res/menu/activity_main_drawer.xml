@@ -14,10 +14,14 @@
                 android:id="@+id/addRover"
                 android:icon="@drawable/add_rover"
                 android:title="@string/addRover" />
+            <item
+                android:id="@+id/logOut"
+                android:icon="@drawable/logout"
+                android:title="@string/logOut" />
         </menu>
     </item>
     <item
-        android:id="@+id/logOut"
+        android:id="@+id/about"
         android:icon="@drawable/logout"
-        android:title="@string/logOut" />
+        android:title="@string/about" />
 </menu>
