@@ -11,7 +11,13 @@
     <string name="addRover">Add Rover</string>
     <string name="logOut">Log Out</string>
     <string name="about">About</string>
+
     <!--simulate-->
     <string name="fetch">Fetch</string>
     <string name="endSimulate">End Simulate</string>
+
+    <!--Add Rover-->
+    <string name="ipAddress">IP address</string>
+    <string name="roverName">Name of the rover</string>
+
 </resources>
