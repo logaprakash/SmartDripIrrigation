@@ -19,5 +19,7 @@
     <!--Add Rover-->
     <string name="ipAddress">IP address</string>
     <string name="roverName">Name of the rover</string>
+    <string name="add_rover_dialog_message">Your rover is added to the list</string>
+    <string name="add_rover_dialog_title">Added</string>
 
 </resources>
