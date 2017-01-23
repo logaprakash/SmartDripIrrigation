@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(MainActivity.this, addRover.class);
             startActivity(i);
         }
+        else if (id == R.id.viewRover) {
+            Intent i = new Intent(MainActivity.this, viewRover.class);
+            startActivity(i);
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
