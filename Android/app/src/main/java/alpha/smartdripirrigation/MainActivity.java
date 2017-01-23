@@ -16,16 +16,7 @@ import android.widget.ListView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    String[] roverNames = {
-            "Rover-1",
-            "Rover-2",
-            "Rover-3",
-            "Rover-4",
-            "Rover-5",
-            "Rover-6",
-            "Rover-7",
-            "Rover-8"
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +24,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.rover_list, roverNames);
 
-        ListView listView = (ListView) findViewById(R.id.mobile_list);
-        listView.setAdapter(adapter);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
