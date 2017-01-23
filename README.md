@@ -29,3 +29,4 @@
 <b><li> 14th Jan 2017 :</b> Simulate page added by Logaprakash Raju
 <b><li> 17th Jan 2017 :</b> Icons added by Logaprakash Raju
 <b><li> 18th Jan 2017 :</b> Added listView and updated colors by Logaprakash Raju
+<b><li> 22th Jan 2017 :</b> Add rover feature added (Unique IP and Name - CHECK) by Logaprakash Raju
