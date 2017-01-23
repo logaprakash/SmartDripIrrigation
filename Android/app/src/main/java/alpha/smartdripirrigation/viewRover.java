@@ -2,6 +2,7 @@ package alpha.smartdripirrigation;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,5 +29,20 @@ public class viewRover extends AppCompatActivity {
 
         ListView listView = (ListView) findViewById(R.id.roverList);
         listView.setAdapter(adapter);
+
+        //Enable Back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+    //Back button function
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
