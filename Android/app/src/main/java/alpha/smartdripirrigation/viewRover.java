@@ -6,32 +6,48 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class viewRover extends AppCompatActivity {
 
-    String[] roverNames = {
-            "Rover-1",
-            "Rover-2",
-            "Rover-3",
-            "Rover-4",
-            "Rover-5",
-            "Rover-6",
-            "Rover-7",
-            "Rover-8"
-    };
+    ArrayList<String> rovers = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_rover);
 
+        //Read temp file
+        String filename = "rovers";
+        File file = new File(getApplicationContext().getFilesDir(), filename);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] separated = line.split("\\$");
+                String temp = "Name:"+separated[0]+"\n"+"IP:"+separated[1];
+                rovers.add(temp);
+            }
+        }
+
+        catch (IOException e) {
+            //You'll need to add proper error handling here
+        }
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.rover_list, roverNames);
+                R.layout.rover_list, rovers);
 
         ListView listView = (ListView) findViewById(R.id.roverList);
         listView.setAdapter(adapter);
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
     }
 
     //Back button function
