@@ -74,12 +74,16 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.simulate) {
             Intent i = new Intent(MainActivity.this, simulate.class);
             startActivity(i);
-        } else if (id == R.id.addRover) {
+        } else if (id == R.id.viewRover) {
+            Intent i = new Intent(MainActivity.this, viewRover.class);
+            startActivity(i);
+        }
+        else if (id == R.id.addRover) {
             Intent i = new Intent(MainActivity.this, addRover.class);
             startActivity(i);
         }
-        else if (id == R.id.viewRover) {
-            Intent i = new Intent(MainActivity.this, viewRover.class);
+        else if (id == R.id.deleteRover) {
+            Intent i = new Intent(MainActivity.this, deleteRover.class);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
