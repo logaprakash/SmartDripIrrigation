@@ -30,7 +30,8 @@
             android:label="@string/simulate" />
         <activity
             android:name=".addRover"
-            android:label="@string/addRover"/>
+            android:label="@string/addRover" />
+        <activity android:name=".viewRover"></activity>
     </application>
 
 </manifest>
