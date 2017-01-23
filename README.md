@@ -1,5 +1,8 @@
 #Smart Drip Irrigation using IOT 
 
+<h2>Objective</h2>
+   <p>The objective of the project is to over come the current methods of automation in drip irrigation of farms with even more cost and energy efficient system and also more user friendly at live feeds display</p>
+   
 <h2>Abstract</h2>
    <p>A Smart rover with Camera and Moisture sensor - It senses the moisture of the soil near the plant and send a signal to respective drip irrigation system if exceeds the threshold. It notifies the user when the plant faces any kind of disease by taking an image of plant and process it with previous processed data of the plant <b>(Digital Image Processing)</b>. The whole system will be based on <b>IoT</b>. Every sensor data and processed image data of plant will be stored in cloud. Rover is controlled and monitored by an android app (Local/Remote). The rover essentially will fetch the path of the farm stored which is stored in the cloud which is pre-simulated by user using android app once which can also be edited or modified later.Whole rover will be <b>"solar powered"</b>.</p>
    
