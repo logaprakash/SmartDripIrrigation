@@ -33,10 +33,10 @@ public class viewRover extends AppCompatActivity {
                 rovers.add(temp);
             }
         }
-
         catch (IOException e) {
             //You'll need to add proper error handling here
         }
+
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
                 R.layout.rover_list, rovers);
 
