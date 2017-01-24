@@ -5,7 +5,7 @@ package alpha.smartdripirrigation;
  */
 
 public class rovers {
-    private static String filename = "rovers";
+    private static String filename = "rovers.ini";
     private String name , ip ;
     rovers(){
         name=ip="";
