@@ -41,7 +41,7 @@ public class rovers {
             }
             return 1;
         }
-        else if (search_ip(IP,context)!= 0 && search_rover_name(NAME,context)!=0){
+        else if ( search_ip(IP,context)!= 0 && search_rover_name(NAME,context)!=0 ){
             return 0 ;
         }
         else if (search_rover_name(NAME,context)!=0){
@@ -54,6 +54,7 @@ public class rovers {
     }
 
     public static int search_ip(String IP,Context context){
+
         File file = new File(context.getFilesDir(), filename);
         int count = 1;
         try {
@@ -72,9 +73,11 @@ public class rovers {
         catch (IOException e) {
             return -1;
         }
+
     }
 
     public static int search_rover_name(String NAME,Context context){
+
         File file = new File(context.getFilesDir(), filename);
         int count = 1;
         try {
@@ -93,6 +96,7 @@ public class rovers {
         catch (IOException e) {
             return -1;
         }
+
     }
 
 }
