@@ -33,15 +33,17 @@ public class addRover extends AppCompatActivity {
         addRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             rovers.addRover(roverName.getText().toString(),
-                             ip.getText().toString(),
-                             getApplicationContext());
+             alert(1);
+                    // rovers.addRover(roverName.getText().toString(),
+                          //   ip.getText().toString(),
+                         //    getApplicationContext())
+            // );
             }
         });
 
     }
 
-    //Back button function
+    //BACK FUNCTIONS
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -84,24 +86,29 @@ public class addRover extends AppCompatActivity {
         ip.setFilters(filters);
     }
 
+    //ALERT FILTERING
     private void alert(final int value){
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(addRover.this);
-        String temp_title 
+        /*String temp_title ,temp_msg;
         if(value==1){
-
+            temp_title = getString(R.string.add_rover_dialog_title_success);
+            temp_msg = getString(R.string.dialog_message_add_rover_success);
         }
         else if(value == 0){
-
+            temp_title = getString(R.string.add_rover_dialog_title_fail);
+            temp_msg = getString(R.string.dialog_message_add_rover_both_fail);
         }
         else if(value == -1){
-
+            temp_title = getString(R.string.add_rover_dialog_title_fail);
+            temp_msg = getString(R.string.dialog_message_rover_name_fail);
         }
         else {
-
-        }
-        builder.setMessage(R.string.add_rover_dialog_message)
-                .setTitle(R.string.add_rover_dialog_title);
+            temp_title = getString(R.string.add_rover_dialog_title_fail);
+            temp_msg = getString(R.string.dialog_message_ip_fail);
+        }*/
+        builder.setMessage(rovers.search_rover_name(roverName.getText().toString(),getApplicationContext()))
+                .setTitle(rovers.search_ip(ip.getText().toString(),getApplicationContext()));
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                if(value==1)
