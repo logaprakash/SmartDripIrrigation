@@ -33,11 +33,11 @@ public class addRover extends AppCompatActivity {
         addRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             alert(1);
-                    // rovers.addRover(roverName.getText().toString(),
-                          //   ip.getText().toString(),
-                         //    getApplicationContext())
-            // );
+             alert(
+                    rovers.addRover(roverName.getText().toString(),
+                          ip.getText().toString(),
+                          getApplicationContext())
+            );
             }
         });
 
@@ -90,7 +90,7 @@ public class addRover extends AppCompatActivity {
     private void alert(final int value){
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(addRover.this);
-        /*String temp_title ,temp_msg;
+        String temp_title ,temp_msg;
         if(value==1){
             temp_title = getString(R.string.add_rover_dialog_title_success);
             temp_msg = getString(R.string.dialog_message_add_rover_success);
@@ -106,11 +106,9 @@ public class addRover extends AppCompatActivity {
         else {
             temp_title = getString(R.string.add_rover_dialog_title_fail);
             temp_msg = getString(R.string.dialog_message_ip_fail);
-        }*/
-        int temp_msg = rovers.search_rover_name(roverName.getText().toString(),getApplicationContext());
-        int temp_title =rovers.search_ip(ip.getText().toString(),getApplicationContext());
-        builder.setMessage(temp_msg)
-                .setTitle(temp_title);
+        }
+        builder.setMessage(String.valueOf(temp_msg))
+                .setTitle(String.valueOf(temp_title));
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                if(value==1)
