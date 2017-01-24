@@ -24,7 +24,7 @@
    <p>Innovation is made using rover reducing the cost of mulitple module for each plant , Digital image processing of each plant to check the condition of the plant and completely solar powered rover.</p>
    
  <h2>Block Diagram</h2>
- ![Alt text](/Block Diagram.png "Block Diagram")
+ ![Alt text](/blockDiagram.jpeg "Block Diagram")
  
 <h2>Team members</h2>
 <li><a href="https://github.com/logaprakash" target="_blank">Logaprakash Raju</a>
