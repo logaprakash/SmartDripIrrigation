@@ -5,7 +5,8 @@ package alpha.smartdripirrigation;
  */
 
 public class rovers {
-    String name , ip ;
+    private static String filename = "rovers";
+    private String name , ip ;
     rovers(){
         name=ip="";
     }
@@ -13,5 +14,8 @@ public class rovers {
         this.name = NAME;
         this.ip = IP;
     }
-    
+
+    public static void addRover(){
+
+    }
 }
