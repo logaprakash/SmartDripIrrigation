@@ -20,8 +20,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class addRover extends AppCompatActivity {
+
     private EditText ip,roverName;
     private Button addRoverBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
