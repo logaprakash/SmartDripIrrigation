@@ -107,8 +107,10 @@ public class addRover extends AppCompatActivity {
             temp_title = getString(R.string.add_rover_dialog_title_fail);
             temp_msg = getString(R.string.dialog_message_ip_fail);
         }*/
-        builder.setMessage(rovers.search_rover_name(roverName.getText().toString(),getApplicationContext()))
-                .setTitle(rovers.search_ip(ip.getText().toString(),getApplicationContext()));
+        int temp_msg = rovers.search_rover_name(roverName.getText().toString(),getApplicationContext());
+        int temp_title =rovers.search_ip(ip.getText().toString(),getApplicationContext());
+        builder.setMessage(temp_msg)
+                .setTitle(temp_title);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                if(value==1)
