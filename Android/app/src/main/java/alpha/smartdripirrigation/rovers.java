@@ -5,6 +5,13 @@ package alpha.smartdripirrigation;
  */
 
 public class rovers {
-
+    String name , ip ;
+    rovers(){
+        name=ip="";
+    }
+    rovers(String NAME,String IP){
+        this.name = NAME;
+        this.ip = IP;
+    }
     
 }
