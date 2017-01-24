@@ -22,9 +22,12 @@
     <!--Add Rover-->
     <string name="ipAddress">IP address</string>
     <string name="roverName">Name of the rover</string>
-    <string name="add_rover_dialog_message">Your rover is added to the list</string>
-    <string name="add_rover_dialog_title">Added</string>
-
+    <string name="dialog_message_add_rover_success">Your rover is added to the list</string>
+    <string name="dialog_message_ip_fail">IP has to be unique !!!</string>
+    <string name="dialog_message_rover_name_fail">Rover name has to be unique !!!</string>
+    <string name="dialog_message_add_rover_both_fail">Both the rover name and ip has to be unique !!!</string>
+    <string name="add_rover_dialog_title_success">Added</string>
+    <string name="add_rover_dialog_title_fail">Already exist</string>
     <!--Delete Rover-->
 
 </resources>
