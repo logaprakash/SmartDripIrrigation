@@ -68,12 +68,12 @@ public class rovers {
                 count++;
             }
             br.close();
-            return 0;
+
         }
         catch (IOException e) {
-            return -1;
-        }
 
+        }
+        return 0;
     }
 
     public static int search_rover_name(String NAME,Context context){
@@ -91,12 +91,11 @@ public class rovers {
                 count++;
             }
             br.close();
-            return 0;
         }
         catch (IOException e) {
-            return -1;
-        }
 
+        }
+        return 0;
     }
 
 }
