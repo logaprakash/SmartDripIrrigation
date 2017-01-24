@@ -22,7 +22,7 @@ public class viewRover extends AppCompatActivity {
         setContentView(R.layout.activity_view_rover);
 
         //Read temp file
-        String filename = "rovers";
+        String filename = "rovers.ini";
         File file = new File(getApplicationContext().getFilesDir(), filename);
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
