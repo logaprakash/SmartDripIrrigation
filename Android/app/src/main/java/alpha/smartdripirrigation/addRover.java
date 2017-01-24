@@ -31,7 +31,7 @@ public class addRover extends AppCompatActivity {
         addRoverBtn = (Button)findViewById(R.id.addRoverBtn);
 
         //Adding filter for ip
-        filter();
+        ipFilter();
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -149,7 +149,7 @@ public class addRover extends AppCompatActivity {
         }
     }
 
-    private void filter(){
+    private void ipFilter(){
         InputFilter[] filters = new InputFilter[1];
         filters[0] = new InputFilter() {
             @Override
