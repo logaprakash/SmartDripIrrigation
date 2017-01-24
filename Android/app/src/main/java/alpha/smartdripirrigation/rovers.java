@@ -62,7 +62,7 @@ public class rovers {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] separated = line.split("\\$");
-                if(IP.equals(separated[0])){
+                if(IP.equals(separated[1])){
                     return count;
                 }
                 count++;
