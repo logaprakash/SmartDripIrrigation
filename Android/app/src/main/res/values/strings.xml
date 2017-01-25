@@ -28,6 +28,8 @@
     <string name="dialog_message_add_rover_both_fail">Both the rover name and ip has to be unique !!!</string>
     <string name="add_rover_dialog_title_success">Added</string>
     <string name="add_rover_dialog_title_fail">Already exist</string>
+
     <!--Delete Rover-->
+
 
 </resources>

@@ -53,6 +53,37 @@ public class rovers {
 
     }
 
+    public static int deleteRover(String IP,Context context){
+        File file = new File(context.getFilesDir(), filename);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] separated = line.split("\\$");
+                if(IP.equals(separated[1])){
+                    String temp ="";
+                    while ((line = br.readLine()) != null) {
+                        separated = line.split("\\$");
+                        temp+= separated[0] + "$" + separated[1] + "\n"  ;
+                    }
+                    deleteFile(context);
+                    FileOutputStream outputStream;
+                    outputStream = context.openFileOutput(filename, MODE_APPEND);
+                    outputStream.write(temp.getBytes());
+                    outputStream.close();
+                    break;
+                }
+
+            }
+            br.close();
+
+        }
+        catch (IOException e) {
+
+        }
+        return 0;
+    }
+
     public static int search_ip(String IP,Context context){
 
         File file = new File(context.getFilesDir(), filename);
@@ -96,6 +127,11 @@ public class rovers {
 
         }
         return 0;
+    }
+
+    public static void deleteFile(Context context){
+        File file = new File(context.getFilesDir(), filename);
+        file.delete();
     }
 
 }
