@@ -32,14 +32,14 @@ public class deleteRover extends AppCompatActivity {
         clearAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                decisionAlert(0);
             }
         });
 
         deleteRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                decisionAlert(1);
             }
         });
 
@@ -89,7 +89,7 @@ public class deleteRover extends AppCompatActivity {
     }
 
     //DECISION ALERT BEFORE DELETING ( 0- CLEAR ALL AND 1 - DELETE ROVER )
-    private void decision_alert(final int value){
+    private void decisionAlert(final int value){
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
         String temp_title ,temp_msg;
 
@@ -134,8 +134,8 @@ public class deleteRover extends AppCompatActivity {
             temp_msg = getString(R.string.delete_rover_message_success);
         }
         else if(value==-1){
-            temp_title = getString(R.string.delete_rover_dialog_title_success);
-            temp_msg = getString(R.string.delete_rover_message_success);
+            temp_title = getString(R.string.delete_rover_dialog_title_clear);
+            temp_msg = getString(R.string.delete_rover_dialog_msg_clear);
         }
         else{
             temp_title = getString(R.string.delete_rover_dialog_title_fail);
