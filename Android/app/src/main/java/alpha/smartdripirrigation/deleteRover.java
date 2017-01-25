@@ -104,8 +104,8 @@ public class deleteRover extends AppCompatActivity {
             temp_msg = getString(R.string.delete_rover_decision_msg_rover);
         }
         else{
-            temp_title = getString(R.string.delete_rover_dialog_title_fail);
-            temp_msg = getString(R.string.delete_rover_message_fail);
+            temp_title = getString(R.string.delete_rover_decision_title_clear);
+            temp_msg = getString(R.string.delete_rover_decision_msg_clear);
         }
 
         builder.setMessage(String.valueOf(temp_msg))
