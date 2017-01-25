@@ -1,5 +1,6 @@
 package alpha.smartdripirrigation;
 
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -37,7 +38,7 @@ public class deleteRover extends AppCompatActivity {
         deleteRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rovers.deleteRover(ip.getText().toString(),getApplicationContext());
+                alert(rovers.deleteRover(ip.getText().toString(),getApplicationContext()));
             }
         });
 
@@ -84,5 +85,31 @@ public class deleteRover extends AppCompatActivity {
 
         };
         ip.setFilters(filters);
+    }
+
+    //ALERT DIALOG
+    private void alert(final int value){
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
+        String temp_title ,temp_msg;
+        if(value==1){
+            temp_title = getString(R.string.delete_message_add_rover_success);
+            temp_msg = getString(R.string.delete_message_add_rover_success);
+        }
+        else{
+            temp_title = getString(R.string.delete_rover_dialog_title_fail);
+            temp_msg = getString(R.string.delete_rover_message_fail);
+        }
+
+        builder.setMessage(String.valueOf(temp_msg))
+                .setTitle(String.valueOf(temp_title));
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                if(value==1)
+                    onBackPressed();
+            }
+        });
+        android.app.AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
