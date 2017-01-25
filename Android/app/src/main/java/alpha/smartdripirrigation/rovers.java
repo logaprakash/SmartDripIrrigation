@@ -130,9 +130,10 @@ public class rovers {
         return 0;
     }
 
-    public static void deleteFile(Context context){
+    public static int deleteFile(Context context){
         File file = new File(context.getFilesDir(), filename);
         file.delete();
+        return -1;
     }
 
 }

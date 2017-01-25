@@ -1,6 +1,7 @@
 package alpha.smartdripirrigation;
 
 import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -31,14 +32,14 @@ public class deleteRover extends AppCompatActivity {
         clearAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rovers.deleteFile(getApplicationContext());
+
             }
         });
 
         deleteRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alert(rovers.deleteRover(ip.getText().toString(),getApplicationContext()));
+
             }
         });
 
@@ -88,8 +89,39 @@ public class deleteRover extends AppCompatActivity {
     }
 
     //DECISION ALERT BEFORE DELETING ( 0- CLEAR ALL AND 1 - DELETE ROVER )
-    private boolean decision_alert(int value){
-        return true;
+    private void decision_alert(final int value){
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
+        String temp_title ,temp_msg;
+
+        if(value==1){
+            temp_title = getString(R.string.delete_rover_decision_title_rover);
+            temp_msg = getString(R.string.delete_rover_decision_msg_rover);
+        }
+        else{
+            temp_title = getString(R.string.delete_rover_dialog_title_fail);
+            temp_msg = getString(R.string.delete_rover_message_fail);
+        }
+
+        builder.setMessage(String.valueOf(temp_msg))
+                .setTitle(String.valueOf(temp_title));
+        builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                 if(value==1){
+                     alert(rovers.deleteRover(ip.getText().toString(),getApplicationContext()));
+                 }
+                else {
+                     alert(rovers.deleteFile(getApplicationContext()));
+                 }
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                //Dialog close
+            }
+        });
+
+        android.app.AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     //ALERT DIALOG
@@ -98,6 +130,10 @@ public class deleteRover extends AppCompatActivity {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
         String temp_title ,temp_msg;
         if(value==1){
+            temp_title = getString(R.string.delete_rover_dialog_title_success);
+            temp_msg = getString(R.string.delete_rover_message_success);
+        }
+        else if(value==-1){
             temp_title = getString(R.string.delete_rover_dialog_title_success);
             temp_msg = getString(R.string.delete_rover_message_success);
         }
