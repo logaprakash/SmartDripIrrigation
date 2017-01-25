@@ -57,21 +57,24 @@ public class rovers {
         File file = new File(context.getFilesDir(), filename);
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
+            String line,temp="";
+
             while ((line = br.readLine()) != null) {
                 String[] separated = line.split("\\$");
+                temp += separated[0] + "$" + separated[1] + "\n"  ;
+
                 if(IP.equals(separated[1])){
-                    String temp ="";
+
                     while ((line = br.readLine()) != null) {
                         separated = line.split("\\$");
-                        temp+= separated[0] + "$" + separated[1] + "\n"  ;
+                        temp += separated[0] + "$" + separated[1] + "\n"  ;
                     }
                     deleteFile(context);
                     FileOutputStream outputStream;
                     outputStream = context.openFileOutput(filename, MODE_APPEND);
                     outputStream.write(temp.getBytes());
                     outputStream.close();
-                    break;
+                    return 1;
                 }
 
             }
