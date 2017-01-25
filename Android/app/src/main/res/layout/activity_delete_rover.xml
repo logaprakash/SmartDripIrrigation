@@ -10,4 +10,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.deleteRover">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:ems="10"
+        android:id="@+id/ip"
+        android:hint="@string/ipAddress"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/roverName"
+        android:layout_alignEnd="@+id/roverName" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:hint="@string/roverName"
+        android:ems="10"
+        android:id="@+id/roverName"
+        android:layout_marginBottom="23dp"
+        android:layout_above="@+id/ip"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/addRover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:layout_marginTop="45dp"
+        android:id="@+id/deleteRoverBtn"
+        android:layout_below="@+id/ip"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+
 </RelativeLayout>
