@@ -87,6 +87,11 @@ public class deleteRover extends AppCompatActivity {
         ip.setFilters(filters);
     }
 
+    //DECISION ALERT BEFORE DELETING ( 0- CLEAR ALL AND 1 - DELETE ROVER )
+    private boolean decision_alert(int value){
+        return true;
+    }
+
     //ALERT DIALOG
     private void alert(final int value){
 
