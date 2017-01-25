@@ -39,7 +39,13 @@ public class deleteRover extends AppCompatActivity {
         deleteRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                decisionAlert(1);
+                if(rovers.search_ip(ip.getText().toString(),getApplicationContext())!= 0){
+                    decisionAlert(1);
+                }
+                else{
+                    alert(0);
+                }
+
             }
         });
 
@@ -128,25 +134,25 @@ public class deleteRover extends AppCompatActivity {
     private void alert(final int value){
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
-        String temp_title ,temp_msg;
+        String temp_title="",temp_msg="";
         if(value==1){
             temp_title = getString(R.string.delete_rover_dialog_title_success);
             temp_msg = getString(R.string.delete_rover_message_success);
         }
-        else if(value==-1){
+        else if(value == -1){
             temp_title = getString(R.string.delete_rover_dialog_title_clear);
             temp_msg = getString(R.string.delete_rover_dialog_msg_clear);
         }
-        else{
+        else if(value == 0){
             temp_title = getString(R.string.delete_rover_dialog_title_fail);
             temp_msg = getString(R.string.delete_rover_message_fail);
         }
 
-        builder.setMessage(String.valueOf(temp_msg))
-                .setTitle(String.valueOf(temp_title));
+        builder.setMessage(temp_msg)
+                .setTitle(temp_title);
         builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                if(value==1)
+                if(value !=0)
                     onBackPressed();
             }
         });
