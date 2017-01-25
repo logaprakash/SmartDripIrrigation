@@ -93,8 +93,8 @@ public class deleteRover extends AppCompatActivity {
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(deleteRover.this);
         String temp_title ,temp_msg;
         if(value==1){
-            temp_title = getString(R.string.delete_message_add_rover_success);
-            temp_msg = getString(R.string.delete_message_add_rover_success);
+            temp_title = getString(R.string.delete_rover_dialog_title_success);
+            temp_msg = getString(R.string.delete_rover_message_success);
         }
         else{
             temp_title = getString(R.string.delete_rover_dialog_title_fail);
