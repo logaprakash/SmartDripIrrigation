@@ -19,9 +19,11 @@
     <string name="fetch">Fetch</string>
     <string name="endSimulate">End Simulate</string>
 
-    <!--Add Rover-->
+
     <string name="ipAddress">IP address</string>
     <string name="roverName">Name of the rover</string>
+
+    <!--Add Rover-->
     <string name="dialog_message_add_rover_success">Your rover is added to the list</string>
     <string name="dialog_message_ip_fail">IP has to be unique !!!</string>
     <string name="dialog_message_rover_name_fail">Rover name has to be unique !!!</string>
@@ -30,6 +32,7 @@
     <string name="add_rover_dialog_title_fail">Already exist</string>
 
     <!--Delete Rover-->
-
+    <string name="delete_rover_dialog_title_success">Deleted</string>
+    <string name="delete_message_add_rover_success">Your rover has been deleted !!!</string>
 
 </resources>
