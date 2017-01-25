@@ -31,6 +31,12 @@ public class deleteRover extends AppCompatActivity {
             }
         });
 
+        deleteRoverBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rovers.deleteRover(ip.getText().toString(),getApplicationContext());
+            }
+        });
 
     }
 
