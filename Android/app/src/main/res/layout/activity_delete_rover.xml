@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:ems="10"
-        android:id="@+id/ip"
+        android:id="@+id/deleteIP"
         android:hint="@string/ipAddress"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
