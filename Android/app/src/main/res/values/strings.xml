@@ -34,6 +34,7 @@
     <!--Delete Rover-->
     <string name="clear_all">Clear rover list</string>
     <string name="delete_rover_dialog_title_success">Deleted</string>
-    <string name="delete_message_add_rover_success">Your rover has been deleted !!!</string>
-
+    <string name="delete_rover_message_success">Your rover has been deleted !!!</string>
+    <string name="delete_rover_dialog_title_fail">Invalid IP</string>
+    <string name="delete_rover_message_fail">IP given is not in the list !!!</string>
 </resources>
