@@ -86,7 +86,7 @@ public class addRover extends AppCompatActivity {
         ip.setFilters(filters);
     }
 
-    //ALERT FILTERING
+    //ALERT DIALOG
     private void alert(final int value){
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(addRover.this);
