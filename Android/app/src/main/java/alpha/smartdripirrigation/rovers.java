@@ -61,8 +61,6 @@ public class rovers {
 
             while ((line = br.readLine()) != null) {
                 String[] separated = line.split("\\$");
-                temp += separated[0] + "$" + separated[1] + "\n"  ;
-
                 if(IP.equals(separated[1])){
 
                     while ((line = br.readLine()) != null) {
@@ -76,7 +74,7 @@ public class rovers {
                     outputStream.close();
                     return 1;
                 }
-
+                temp += separated[0] + "$" + separated[1] + "\n"  ;
             }
             br.close();
 
