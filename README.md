@@ -48,3 +48,5 @@
 <b><li> 18th Jan 2017 :</b> Added listView and updated colors by Logaprakash Raju
 <b><li> 22th Jan 2017 :</b> Add rover feature added (Unique IP and Name - CHECK) by Logaprakash Raju
 <b><li> 23th Jan 2017 :</b> View all rovers feature in list view added by Logaprakash Raju
+<b><li> 24th Jan 2017 :</b> Rover class with generic funtions added by Logaprakash Raju
+<b><li> 25th Jan 2017 :</b> Delete particular rover and clear whole list features added by Logaprakash Raju
