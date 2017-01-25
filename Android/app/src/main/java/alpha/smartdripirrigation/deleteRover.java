@@ -17,6 +17,9 @@ public class deleteRover extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delete_rover);
 
+        clearAllBtn = (Button)findViewById(R.id.clearAllBtn);
+        deleteRoverBtn = (Button)findViewById(R.id.deleteRoverBtn);
+        ip = (EditText)findViewById(R.id.deleteIP);
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -28,7 +31,7 @@ public class deleteRover extends AppCompatActivity {
             }
         });
 
-        
+
     }
 
     //Back button function
