@@ -11,14 +11,26 @@
     tools:context="alpha.smartdripirrigation.deleteRover">
 
     <Button
+        android:text="@string/clear_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:id="@+id/clearAllBtn"
+        android:layout_below="@+id/deleteRoverBtn"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="33dp"
+        android:layout_alignParentEnd="true" />
+
+    <Button
         android:text="@string/deleteRover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/btnBackground"
         android:textColor="@color/btnTextColor"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="20dp"
         android:id="@+id/deleteRoverBtn"
-        android:layout_below="@+id/ip"
+        android:layout_below="@+id/deleteIP"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
@@ -29,21 +41,9 @@
         android:ems="10"
         android:id="@+id/deleteIP"
         android:hint="@string/ipAddress"
+        android:layout_marginTop="133dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="177dp"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="@string/clear_all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/btnBackground"
-        android:textColor="@color/btnTextColor"
-        android:id="@+id/clearAllBtn"
-        android:layout_below="@+id/deleteRoverBtn"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="33dp"
         android:layout_alignParentEnd="true" />
 
 
