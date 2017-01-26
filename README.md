@@ -4,34 +4,28 @@
    <p>The objective of the project is to over come the current methods of automation in drip irrigation of farms with even more cost and energy efficient system and also more user friendly at live feeds display</p>
    
 <h2>Abstract</h2>
-   <p>A Smart rover with Camera and Moisture sensor - It senses the moisture of the soil near the plant and send a signal to respective drip irrigation system if exceeds the threshold. It notifies the user when the plant faces any kind of disease by taking an image of plant and process it with previous processed data of the plant <b>(Digital Image Processing)</b>. The whole system will be based on <b>IoT</b>. Every sensor data and processed image data of plant will be stored in cloud. Rover is controlled and monitored by an android app (Local/Remote). The rover essentially will fetch the path of the farm stored which is stored in the cloud which is pre-simulated by user using android app once which can also be edited or modified later.Whole rover will be <b>"solar powered"</b>.</p>
-   
-<h2>Technology</h2>
+   <p>This system is built to offer farmers, an automation in drip irrigation system. The proposed system uses a solar powered rover with sensors, cloud service, an android app to monitor the field ,control the rover manually as well as to switch the motor on or off for drip services. This system provides the user with real time data of the field. This is done by a WebMos which is attached to the rover and it also alerts the user when there is an overflow of water for a particular plant are area  by using the soil moisture sensor which sends the readings to the cloud. Obstacle detection technique is implemented in the rover which helps in sending notification to the user when the rover gets disturbed in its way. By using our system the drip irrigation can be done by the farmer (user) at any time anywhere in an efficient and effective way.</p>
+  
+<h2>Innovation</h2>
+<li>The map for the farm is prepopulated to the rover for its automatic movement in the farm, it can also be controlled and simulated manually using the android app if there is any change in the movement for next time. 
+<li>The rover is controlled by a solar powered battery in which the solar plate is just fixed at the top of the rover. 
+<li>Digital image processing technique is also used to alert the user when the plants get affected by certain diseases (which changes the color of the leaf or the stem gets broken).
 
+<h2>Technology</h2>
 <h4>Software:</h4>
   <li>Android app
   <li>Azure Cloud 
   
 <h4>Hardware:</h4>
-  <li>WebMos D1 with ESP8266 - 1
+  <li>WebMos D1 with ESP8266 - 2
   <li>Soil Moisture Meter Testing Module - 1
   <li>Motor driver l293d - 2
   <li>Chaos with four motors attached with wheels at each one - 1
   <li>Camera - 1
-  <li>Solar Batteries -1
+  <li>Solar Batteries -1 
   
-<h2>Innovation</h2>
-   <p>Innovation is made using rover reducing the cost of mulitple module for each plant , Digital image processing of each plant to check the condition of the plant and completely solar powered rover.</p>
-   
  <h2>Block Diagram</h2>
  ![Alt text](/blockDiagram.jpg "Block Diagram")
- 
-<h2>Team members</h2>
-<li><a href="https://github.com/logaprakash" target="_blank">Logaprakash Raju</a>
-<li><a href="#" target="_blank">Deep Parikh</a>
-<li><a href="#" target="_blank">Rm.Rama Chidambaram</a>
-<li><a href="#" target="_blank">Rohan Shrivastava</a>
-<li><a href="https://github.com/raaghavmehta" target="_blank">Raaghav Mehta</a>
 
 <h2>TimeLine:</h2>
 <h3>Webmos:</h3>
