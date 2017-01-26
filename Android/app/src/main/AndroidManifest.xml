@@ -31,10 +31,13 @@
         <activity
             android:name=".addRover"
             android:label="@string/addRover" />
-        <activity android:name=".viewRover"
+        <activity
+            android:name=".viewRover"
             android:label="@string/viewRover" />
-        <activity android:name=".deleteRover"
-            android:label="@string/deleteRover"/>
+        <activity
+            android:name=".deleteRover"
+            android:label="@string/deleteRover" />
+        <activity android:name=".roverDetails"></activity>
     </application>
 
 </manifest>
