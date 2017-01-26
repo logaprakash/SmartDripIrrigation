@@ -37,6 +37,8 @@
         android:text="Make this rover as Active rover"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
         android:id="@+id/button"
         android:layout_marginTop="66dp"
         android:layout_below="@+id/textView4"
