@@ -13,7 +13,7 @@
   <li>Azure Cloud 
   
 <h4>Hardware:</h4>
-  <li>WebMos D1 with ESP8266 - 1
+  <li>WebMos D1 with ESP8266 - 2
   <li>Soil Moisture Meter Testing Module - 1
   <li>Motor driver l293d - 2
   <li>Chaos with four motors attached with wheels at each one - 1
