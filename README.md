@@ -21,7 +21,10 @@
   <li>Solar Batteries -1
   
 <h2>Innovation</h2>
-   <p>Innovation is made using rover reducing the cost of mulitple module for each plant , Digital image processing of each plant to check the condition of the plant and completely solar powered rover.</p>
+<li>The map for the farm is prepopulated to the rover for its automatic movement in the farm, it can also be controlled and simulated manually using the android app if there is any change in the movement for next time. 
+<li>The rover is controlled by a solar powered battery in which the solar plate is just fixed at the top of the rover. 
+<li>Digital image processing technique is also used to alert the user when the plants get affected by certain diseases (which changes the color of the leaf or the stem gets broken).
+
    
  <h2>Block Diagram</h2>
  ![Alt text](/blockDiagram.jpg "Block Diagram")
