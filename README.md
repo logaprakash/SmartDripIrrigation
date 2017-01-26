@@ -11,11 +11,7 @@
 <li>The rover is controlled by a solar powered battery in which the solar plate is just fixed at the top of the rover. 
 <li>Digital image processing technique is also used to alert the user when the plants get affected by certain diseases (which changes the color of the leaf or the stem gets broken).
 
-   
- <h2>Block Diagram</h2>
- ![Alt text](/blockDiagram.jpg "Block Diagram")
- 
- <h2>Technology</h2>
+<h2>Technology</h2>
 <h4>Software:</h4>
   <li>Android app
   <li>Azure Cloud 
@@ -26,7 +22,10 @@
   <li>Motor driver l293d - 2
   <li>Chaos with four motors attached with wheels at each one - 1
   <li>Camera - 1
-  <li>Solar Batteries -1
+  <li>Solar Batteries -1 
+  
+ <h2>Block Diagram</h2>
+ ![Alt text](/blockDiagram.jpg "Block Diagram")
 
 <h2>TimeLine:</h2>
 <h3>Webmos:</h3>
