@@ -13,7 +13,7 @@ public class roverDetails extends AppCompatActivity {
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        
+
     }
 
     //Back button function
