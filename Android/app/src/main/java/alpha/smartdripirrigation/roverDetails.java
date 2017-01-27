@@ -6,19 +6,23 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class roverDetails extends AppCompatActivity {
-    TextView details;
+    TextView name , ip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rover_details);
-        details =  (TextView)findViewById(R.id.details);
+        name =  (TextView)findViewById(R.id.nameDetails);
+        ip =  (TextView)findViewById(R.id.ipDetails);
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Bundle bundle = getIntent().getExtras();
-        details.setText(bundle.getString("message"));
 
+        Bundle bundle = getIntent().getExtras();
+        String temp = bundle.getString("message");
+        String[] separated = temp.split("\\n");
+        name.setText(separated[0]);
+        ip.setText(separated[1]);
     }
 
     //Back button function

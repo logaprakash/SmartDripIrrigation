@@ -17,7 +17,7 @@
         android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/details"
+        android:id="@+id/nameDetails"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="75dp" />
@@ -29,8 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView6"
+        android:id="@+id/ipDetails"
+        android:layout_below="@+id/nameDetails"
         android:layout_centerHorizontal="true" />
 
     <Button
