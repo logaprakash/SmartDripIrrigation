@@ -160,9 +160,10 @@ public class rovers {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] separated = line.split("\\$");
-                String temp = "Rover name: "+separated[0]+"\n"+"IP: "+separated[1];
-                if(separated[0]==getActive(app)){
-                    temp+= "\t\t ACTIVE";
+                String temp = "Rover name: "+ separated[0] +"\n"+"IP: "+ separated[1] ;
+                if(separated[0].trim() == getActive(app)){
+                    temp += "ACTIVE";
+
                 }
 
                 tempList.add(temp);

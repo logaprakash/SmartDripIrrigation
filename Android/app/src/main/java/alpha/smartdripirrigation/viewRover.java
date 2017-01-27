@@ -33,7 +33,7 @@ public class viewRover extends AppCompatActivity {
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
