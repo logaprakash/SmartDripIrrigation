@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static android.content.Context.MODE_APPEND;
 
@@ -149,6 +150,28 @@ public class rovers {
     public static String getActive(Application app){
         SharedPreferences sharedPref = app.getSharedPreferences("",0);
         return sharedPref.getString(app.getApplicationContext().getString(R.string.active_rover), "none");
+    }
+
+    public static ArrayList<String> getList(Application app){
+        ArrayList<String> tempList = new ArrayList<>();
+        File file = new File(app.getApplicationContext().getFilesDir(), filename);
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] separated = line.split("\\$");
+                String temp = "Rover name: "+separated[0]+"\n"+"IP: "+separated[1];
+                if(separated[0]==getActive(app)){
+                    temp+= "\t\t ACTIVE";
+                }
+
+                tempList.add(temp);
+            }
+        }
+        catch (IOException e) {
+            //You'll need to add proper error handling here
+        }
+        return tempList;
     }
 
 

@@ -18,31 +18,14 @@ import java.util.ArrayList;
 
 public class viewRover extends AppCompatActivity {
 
-    ArrayList<String> rovers = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_rover);
 
-        //Read temp file
-        String filename = "rovers.ini";
-        File file = new File(getApplicationContext().getFilesDir(), filename);
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] separated = line.split("\\$");
-                String temp = "Rover name: "+separated[0]+"\n"+"IP: "+separated[1];
-                rovers.add(temp);
-            }
-        }
-        catch (IOException e) {
-            //You'll need to add proper error handling here
-        }
-
+        ArrayList<String> list = rovers.getList(getApplication());
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.rover_list, rovers);
+                R.layout.rover_list, list);
 
         ListView listView = (ListView) findViewById(R.id.roverList);
         listView.setAdapter(adapter);
@@ -50,9 +33,7 @@ public class viewRover extends AppCompatActivity {
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-
-
+        
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
