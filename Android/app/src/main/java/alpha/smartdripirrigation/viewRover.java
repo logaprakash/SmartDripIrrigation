@@ -1,10 +1,14 @@
 package alpha.smartdripirrigation;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -45,6 +49,20 @@ public class viewRover extends AppCompatActivity {
 
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // selected item
+                String selected = ((TextView) view.findViewById(R.id.roverName)).getText().toString();
+                Intent i = new Intent(viewRover.this,roverDetails.class);
+                i.putExtra("message", selected);
+                startActivity(i);
+            }
+        });
 
 
 
