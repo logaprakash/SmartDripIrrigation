@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:background="@color/btnBackground"
         android:textColor="@color/btnTextColor"
-        android:id="@+id/button"
+        android:id="@+id/activeRoverBtn"
         android:layout_below="@+id/ipDetails"
         android:layout_alignParentStart="true"
         android:layout_marginTop="58dp"
