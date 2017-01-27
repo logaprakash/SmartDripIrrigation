@@ -33,7 +33,7 @@ public class viewRover extends AppCompatActivity {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] separated = line.split("\\$");
-                String temp = "Rover name: "+separated[0]+"\n"+"IP:"+separated[1];
+                String temp = "Rover name: "+separated[0]+"\n"+"IP: "+separated[1];
                 rovers.add(temp);
             }
         }
