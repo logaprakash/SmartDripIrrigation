@@ -1,7 +1,10 @@
 package alpha.smartdripirrigation;
 
 
+import android.app.Application;
 import android.content.Context;
+import android.content.SharedPreferences;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -135,6 +138,19 @@ public class rovers {
         file.delete();
         return -1;
     }
+
+    public static void makeActive(Application app,String value){
+        SharedPreferences sharedPref = app.getSharedPreferences("",0);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString(app.getApplicationContext().getString(R.string.active_rover), value);
+        editor.commit();
+    }
+
+    public static String getActive(Application app){
+        SharedPreferences sharedPref = app.getSharedPreferences("",0);
+        return sharedPref.getString(app.getApplicationContext().getString(R.string.active_rover), "none");
+    }
+
 
 }
 

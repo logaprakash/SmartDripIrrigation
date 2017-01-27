@@ -25,21 +25,17 @@ public class roverDetails extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         String temp = bundle.getString("message");
-        final String[] separated1 = temp.split("\\n");
-        name.setText(separated1[0]);
-        ip.setText(separated1[1]);
+        String[] separated = temp.split("\\n");
+        name.setText(separated[0]);
+        ip.setText(separated[1]);
 
         activeRoverBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String[] separated = separated1[0].split(":");
+                String[] separated = name.getText().toString().split(":");
                 String value = separated[1].trim();
-                SharedPreferences sharedPref = getApplication().getSharedPreferences(value,0);
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putString(getString(R.string.active_rover), value);
-                editor.commit();
-                String temp2 = sharedPref.getString(getString(R.string.active_rover), "none");
-                Toast.makeText(getApplicationContext(),temp2,Toast.LENGTH_LONG).show();
+                rovers.makeActive(getApplication(),value);
+                Toast.makeText(getApplicationContext(),rovers.getActive(getApplication()),Toast.LENGTH_LONG).show();
             }
         });
     }
