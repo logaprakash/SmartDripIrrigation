@@ -17,7 +17,7 @@
   <li>Azure Cloud 
   
 <h4>Hardware:</h4>
-  <li>WebMos D1 with ESP8266 - 2
+  <li>WeMos D1 with ESP8266 - 2
   <li>Soil Moisture Meter Testing Module - 1
   <li>Motor driver l293d - 2
   <li>Chaos with four motors attached with wheels at each one - 1
@@ -28,7 +28,7 @@
  ![Alt text](/blockDiagram.jpg "Block Diagram")
 
 <h2>TimeLine:</h2>
-<h3>Webmos:</h3>
+<h3>WeMos D1:</h3>
 <b><li> 27th Dec 2016 :</b> GitHub Repo started by Logaprakash Raju
 <b><li> 28th Dec 2016 :</b> Testing board header added (Tested board WebMos D1 with ESP8266 - Tested OK) by Logaprakash Raju
 <b><li> 29th Dec 2016 :</b> Rover header added (Not Tested Yet) by Logaprakash Raju
