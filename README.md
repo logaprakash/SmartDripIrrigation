@@ -20,7 +20,7 @@
   <li>WeMos D1 with ESP8266 - 2
   <li>Soil Moisture Meter Testing Module - 1
   <li>Motor driver l293d - 2
-  <li>Drip irrigation valves
+  <li>Drip irrigation valves each one for segment
   <li>Chaos with four motors attached with wheels at each one - 1
   <li>Camera - 1
   <li>Solar powered batteries - 1 
