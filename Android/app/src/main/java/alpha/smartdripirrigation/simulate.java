@@ -42,12 +42,13 @@ import java.net.URL;
 public class simulate extends AppCompatActivity {
     int count = 0;
     ImageButton up, down, left, right;
+    Button fetch;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
-    private Socket Client;
+    //private Socket Client;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,18 +59,21 @@ public class simulate extends AppCompatActivity {
         wifiManager.setWifiEnabled(true);
         WifiConfiguration wifiConfig = new WifiConfiguration();
 
-        wifiConfig.SSID = String.format("\"%s\"", "hotspot");
-        wifiConfig.preSharedKey = String.format("\"%s\"", "12345678");
+        wifiConfig.SSID = String.format("\"%s\"", "sdi");
+        wifiConfig.preSharedKey = String.format("\"%s\"", "");
 
 
         int netId = wifiManager.addNetwork(wifiConfig);
         wifiManager.disconnect();
         wifiManager.enableNetwork(netId, true);
         wifiManager.reconnect();
+
         up = (ImageButton) findViewById(R.id.forward);
         down = (ImageButton) findViewById(R.id.backward);
         left = (ImageButton) findViewById(R.id.left);
         right = (ImageButton) findViewById(R.id.right);
+        fetch = (Button) findViewById(R.id.fetch);
+
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +96,12 @@ public class simulate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new addemptyTask().execute("4");
+            }
+        });
+        fetch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new addemptyTask().execute("5");
             }
         });
 
@@ -155,20 +165,21 @@ public class simulate extends AppCompatActivity {
             String token = "";
 
                 try{
-                    Client = new Socket("192.168.4.1", 80 );
-                    OutputStreamWriter printwriter = new OutputStreamWriter(Client.getOutputStream(), "ISO-8859-1");
-                    printwriter.write(strings[0]);
-                    printwriter.flush();
-                    printwriter.close();
-                    Client.close();
+                    HttpClient httpclient = new DefaultHttpClient();
+                    HttpGet getRequest = new HttpGet("http://192.168.4.1:80/?value=" + strings[0]); // create an HTTP GET object
+                    HttpResponse response = httpclient.execute(getRequest);
+
                 }
                 catch (IOException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                /*HttpClient httpclient = new DefaultHttpClient();
-                HttpGet getRequest = new HttpGet("http://192.168.137.9:80/?gpio=" + strings[0]); // create an HTTP GET object
-                HttpResponse response = httpclient.execute(getRequest);*/
+                /* Client = new Socket("192.168.4.1", 80 );
+                    OutputStreamWriter printwriter = new OutputStreamWriter(Client.getOutputStream(), "ISO-8859-1");
+                    printwriter.write(strings[0]);
+                    printwriter.flush();
+                    printwriter.close();
+                    Client.close();*/
 
             return token;
 
