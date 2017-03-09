@@ -34,6 +34,7 @@
 <b><li> 28th Dec 2016 :</b> Testing board header added (Tested board WeMos D1 with ESP8266 - Tested OK) by Logaprakash Raju
 <b><li> 29th Dec 2016 :</b> Rover header added (Not Tested Yet) by Logaprakash Raju
 <b><li> 30th Dec 2016 :</b> Wifi and Time header added (Time and WiFi functions - Tested OK) by Logaprakash Raju
+<b><li> 09th Mar 2017 :</b> Rover responding to the simulation from app (Tested OK) by Logaprakash Raju
 
 <h3>Android:</h3>
 <b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
