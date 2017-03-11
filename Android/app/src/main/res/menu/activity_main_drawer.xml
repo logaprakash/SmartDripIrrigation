@@ -13,22 +13,6 @@
 
         </menu>
     </item>
-    <item android:title="@string/rovers">
-        <menu>
-            <item
-                android:id="@+id/viewRover"
-                android:icon="@drawable/view_rover"
-                android:title="@string/viewRover" />
-            <item
-                android:id="@+id/addRover"
-                android:icon="@drawable/add_rover"
-                android:title="@string/addRover" />
-            <item
-                android:id="@+id/deleteRover"
-                android:icon="@drawable/delete_rover"
-                android:title="@string/deleteRover" />
-        </menu>
-    </item>
     <item
         android:id="@+id/logOut"
         android:icon="@drawable/logout"
