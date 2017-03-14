@@ -8,6 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.microsoft.azure.storage.CloudStorageAccount;
+import com.microsoft.azure.storage.blob.CloudBlobClient;
+import com.microsoft.azure.storage.blob.CloudBlobContainer;
+
 import java.io.IOException;
 
 public class Login extends Activity {
@@ -21,7 +25,7 @@ public class Login extends Activity {
         roverName = (EditText) findViewById(R.id.rover_name);
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button) findViewById(R.id.login);
-
+        new login.execute("");
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -34,7 +38,21 @@ public class Login extends Activity {
     private class login extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
-
+            try
+            {
+                String storageConnectionString =
+                        "DefaultEndpointsProtocol=http;" +
+                                "AccountName=smartdripirrigation;" +
+                                "AccountKey=wQFS5WHHisI2wZNaonXUtvyRajMQtrB8iYUIK16fxW+bO8COxEdU+ZQKuQOViqIpXgVigFBLvR+/ge1rnfOyKA==";
+                CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
+                CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+                CloudBlobContainer container = blobClient.getContainerReference("path");
+                container.createIfNotExists();
+            }
+            catch (Exception e)
+            {
+                e.printStackTrace();
+            }
           return null ;
         }
 

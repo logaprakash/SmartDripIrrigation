@@ -27,6 +27,8 @@ dependencies {
     android {
         useLibrary 'org.apache.http.legacy'
     }
+
+    compile 'com.microsoft.azure.android:azure-storage-android:1.0.0@aar'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.android.support:design:23.4.0'
     testCompile 'junit:junit:4.12'
