@@ -25,19 +25,21 @@ public class Login extends Activity {
         roverName = (EditText) findViewById(R.id.rover_name);
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button) findViewById(R.id.login);
-        new login.execute("");
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new RoverLogin().execute();
                 Intent i = new Intent(Login.this, MainActivity.class);
                 startActivity(i);
             }
         });
 
     }
-    private class login extends AsyncTask<String, Void, String> {
+
+    private class RoverLogin extends AsyncTask<Void, Void, Void> {
         @Override
-        protected String doInBackground(String... strings) {
+        protected Void doInBackground(Void... params) {
             try
             {
                 String storageConnectionString =
@@ -53,12 +55,11 @@ public class Login extends Activity {
             {
                 e.printStackTrace();
             }
-          return null ;
+            return null ;
         }
 
-        protected void onPostExecute(String token) {
+        protected void onPostExecute() {
 
         }
     }
-
 }
