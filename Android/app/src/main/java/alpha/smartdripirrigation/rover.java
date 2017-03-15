@@ -9,17 +9,17 @@ import com.microsoft.azure.storage.table.TableServiceEntity;
 
 public class rover extends TableServiceEntity {
 
-    private String roverName;
     private String password;
-    private String auth;
+    private String auth="1232nnds12";
     public rover(){
     }
     public rover(String name,String pass){
-        this.roverName = name;
         this.password = pass;
+        this.rowKey = name;
+        this.partitionKey="public";
     }
     public String getRoverName(){
-        return roverName;
+        return rowKey;
     }
     public String getPass(){
         return password;
