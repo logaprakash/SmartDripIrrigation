@@ -11,6 +11,8 @@ import android.widget.EditText;
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
+import com.microsoft.azure.storage.table.CloudTable;
+import com.microsoft.azure.storage.table.CloudTableClient;
 
 import java.io.IOException;
 
@@ -46,10 +48,16 @@ public class Login extends Activity {
                         "DefaultEndpointsProtocol=http;" +
                                 "AccountName=smartdripirrigation;" +
                                 "AccountKey=wQFS5WHHisI2wZNaonXUtvyRajMQtrB8iYUIK16fxW+bO8COxEdU+ZQKuQOViqIpXgVigFBLvR+/ge1rnfOyKA==";
-                CloudStorageAccount storageAccount = CloudStorageAccount.parse(storageConnectionString);
-                CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
-                CloudBlobContainer container = blobClient.getContainerReference("path");
-                container.createIfNotExists();
+                CloudStorageAccount storageAccount =
+                        CloudStorageAccount.parse(storageConnectionString);
+                CloudTableClient tableClient = storageAccount.createCloudTableClient();
+
+                // Create the table if it doesn't exist.
+                String tableName = "rovers";
+                CloudTable cloudTable = tableClient.getTableReference(tableName);
+                //cloudTable.createIfNotExists();
+                
+
             }
             catch (Exception e)
             {
