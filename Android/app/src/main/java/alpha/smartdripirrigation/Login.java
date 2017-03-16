@@ -8,10 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.blob.CloudBlobClient;
 import com.microsoft.azure.storage.blob.CloudBlobContainer;
+import com.microsoft.azure.storage.blob.CloudBlockBlob;
 import com.microsoft.azure.storage.table.CloudTable;
 import com.microsoft.azure.storage.table.CloudTableClient;
 import com.microsoft.azure.storage.table.TableOperation;
@@ -20,6 +22,7 @@ import java.io.IOException;
 
 public class Login extends Activity {
 
+    String name,pass;
     EditText roverName,password;
     Button loginBtn;
     @Override
@@ -33,18 +36,18 @@ public class Login extends Activity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //new RoverLogin().execute();
-                Intent i = new Intent(Login.this, MainActivity.class);
-                startActivity(i);
+                name = roverName.getText().toString();
+                pass = password.getText().toString();
+                new RoverLogin().execute();
 
             }
         });
 
     }
 
-    private class RoverLogin extends AsyncTask<Void, Void, Void> {
+    public class RoverLogin extends AsyncTask<Void, Void, String> {
         @Override
-        protected Void doInBackground(Void... params) {
+        protected String doInBackground(Void... params) {
 
                 String storageConnectionString =
                         "DefaultEndpointsProtocol=http;" +
@@ -55,26 +58,31 @@ public class Login extends Activity {
                     // Retrieve storage account from connection-string.
                     CloudStorageAccount storageAccount =
                             CloudStorageAccount.parse(storageConnectionString);
+                    // Create the blob client.
+                    CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
 
-                    // Create the table client.
-                    CloudTableClient tableClient = storageAccount.createCloudTableClient();
+                    // Retrieve reference to a previously created container.
+                    CloudBlobContainer container = blobClient.getContainerReference("password");
 
-                    // Create the table if it doesn't exist.
-                    String tableName = "people";
-                    CloudTable cloudTable = tableClient.getTableReference(tableName);
-                    cloudTable.createIfNotExists();
+                    CloudBlockBlob blob = container.getBlockBlobReference(name);
+                    String temp = blob.downloadText();
+                    //if(temp == pass)
+                        return temp;
                 }
                 catch (Exception e)
                 {
                     // Output the stack trace.
                     e.printStackTrace();
                 }
-            return null ;
+            return "false" ;
         }
 
-        protected void onPostExecute() {
+        protected void onPostExecute(String dec) {
+            Toast.makeText(getApplicationContext(),dec,Toast.LENGTH_LONG).show();
+            if(dec=="true"){
             Intent i = new Intent(Login.this, MainActivity.class);
             startActivity(i);
+            }
         }
     }
 }
