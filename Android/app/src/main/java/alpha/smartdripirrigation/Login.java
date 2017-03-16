@@ -66,8 +66,8 @@ public class Login extends Activity {
 
                     CloudBlockBlob blob = container.getBlockBlobReference(name);
                     String temp = blob.downloadText();
-                    //if(temp == pass)
-                        return temp;
+                    if(temp.equals(pass))
+                        return "true";
                 }
                 catch (Exception e)
                 {
@@ -78,7 +78,6 @@ public class Login extends Activity {
         }
 
         protected void onPostExecute(String dec) {
-            Toast.makeText(getApplicationContext(),dec,Toast.LENGTH_LONG).show();
             if(dec=="true"){
             Intent i = new Intent(Login.this, MainActivity.class);
             startActivity(i);
