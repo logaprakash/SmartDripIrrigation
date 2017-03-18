@@ -155,17 +155,8 @@ public class simulate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 count++;
-                AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
-                alertDialog.setTitle("Next Segment");
-                alertDialog.setMessage("Path has been ended for segment - "+String.valueOf(count));
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-                path.append("\n");
+                msgdialog("Next Segment","Path has been ended for segment - "+String.valueOf(count),0);
+                path.append("7");
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -222,6 +213,22 @@ public class simulate extends AppCompatActivity {
         client.disconnect();
     }
 
+    public void msgdialog(String title,String msg,final int dec){
+        AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(dec==1){
+                            Intent i = new Intent(simulate.this, MainActivity.class);
+                            startActivity(i);
+                        }
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
     private class addemptyTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
@@ -250,8 +257,19 @@ public class simulate extends AppCompatActivity {
 
         protected void onPostExecute(String token) {
             if(token.equals("6")){
-                  wifiManager.disconnect();
-                  new storePath().execute(path.toString());
+                wifiManager.disconnect();
+                AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
+                alertDialog.setTitle("Alert");
+                alertDialog.setMessage("Turn on mobile data and press ok !!!");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                new storePath().execute(path.toString());
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+
             }
         }
     }
@@ -279,8 +297,7 @@ public class simulate extends AppCompatActivity {
 
         protected void onPostExecute(String dec) {
 
-            Intent i = new Intent(simulate.this, MainActivity.class);
-            startActivity(i);
+             msgdialog("SUCCESS","Your simulated path has been stored",1);
 
         }
     }
