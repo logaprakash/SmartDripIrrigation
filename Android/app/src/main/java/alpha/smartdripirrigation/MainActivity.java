@@ -1,6 +1,8 @@
 package alpha.smartdripirrigation;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -10,14 +12,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
-
+    ProgressDialog dialog;
+    TextView seg1,seg2;
+    String temp1="",temp2="";
+    Button refresh;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +36,13 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        seg1 = (TextView)findViewById(R.id.value1);
+        seg2 = (TextView)findViewById(R.id.value2);
+        refresh = (Button) findViewById(R.id.refresh);
+        dialog = ProgressDialog.show(MainActivity.this, "",
+                "Getting live feeds...", true);
+        new getFeeds().execute("seg1");
+        new getFeeds().execute("seg2");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -34,6 +52,17 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog = ProgressDialog.show(MainActivity.this, "",
+                        "Getting live feeds...", true);
+                new getFeeds().execute("seg1");
+                new getFeeds().execute("seg2");
+            }
+        });
+
     }
 
     @Override
@@ -83,5 +112,45 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+
+    public class getFeeds extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try
+            {
+                HttpClient httpclient = new DefaultHttpClient();
+
+                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/getBlobContent.php?name=sample&segment="+strings[0]);
+                getRequest.setHeader("Content-Type", "application/json");
+                HttpResponse response = httpclient.execute(getRequest);
+                String responseString = EntityUtils.toString(response.getEntity());
+
+                if(strings[0].equals("seg1"))
+                    temp1 = responseString;
+                else
+                    temp2 = responseString;
+
+                return strings[0];
+            }
+            catch (Exception e)
+            {
+                // Output the stack trace.
+                e.printStackTrace();
+            }
+            return "false" ;
+        }
+
+        protected void onPostExecute(String dec) {
+
+            seg1.setText("VALUE: " +temp1);
+            seg2.setText("VALUE: " +temp2);
+            if(!temp1.equals("")&& !temp2.equals(""))
+                dialog.dismiss();
+
+        }
     }
 }
