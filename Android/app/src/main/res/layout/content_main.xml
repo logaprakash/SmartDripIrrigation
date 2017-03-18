@@ -14,23 +14,66 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="alpha.smartdripirrigation.MainActivity">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
+</LinearLayout>
     <TextView
-        android:text="TextView"
+        android:text="SEGMENT - 1"
+        android:layout_margin="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="26dp"
         android:layout_marginStart="59dp"
         android:layout_marginTop="63dp"
-        android:id="@+id/textView3" />
+        android:id="@+id/seg1" />
 
     <TextView
-        android:text="TextView"
+        android:text="SEGMENT - 2"
+        android:textColor="@color/colorPrimary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_marginTop="72dp"
+        android:id="@+id/seg2"
+        android:textSize="26dp"
+        android:layout_below="@+id/value1"
+        android:layout_alignStart="@+id/seg1" />
+
+    <TextView
+        android:text="VALUE: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/value2"
+        android:textSize="26dp"
+        android:layout_below="@+id/seg2"
+        android:layout_alignStart="@+id/seg2"
+        android:layout_marginTop="22dp" />
+
+    <TextView
+        android:text="VALUE: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="17dp"
+        android:id="@+id/value1"
+        android:textSize="26dp"
+        android:layout_below="@+id/seg1"
+        android:layout_alignStart="@+id/seg1" />
+
+    <Button
+        android:text="Refresh"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/value2"
+        android:layout_alignEnd="@+id/seg2"
+        android:layout_marginTop="44dp"
+        android:id="@+id/refresh" />
+
 </RelativeLayout>
