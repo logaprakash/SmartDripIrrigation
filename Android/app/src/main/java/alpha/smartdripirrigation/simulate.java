@@ -43,7 +43,7 @@ import java.net.URL;
 public class simulate extends AppCompatActivity {
     int count = 0;
     ImageButton up, down, left, right;
-    Button fetch,end;
+    Button fetch,end,nextSeg;
     StringBuilder path;
 
 
@@ -79,6 +79,7 @@ public class simulate extends AppCompatActivity {
         right = (ImageButton) findViewById(R.id.right);
         fetch = (Button) findViewById(R.id.fetch);
         end = (Button) findViewById(R.id.endSimulate);
+        nextSeg = (Button) findViewById(R.id.nextSegment)
 
 
         up.setOnClickListener(new View.OnClickListener() {
