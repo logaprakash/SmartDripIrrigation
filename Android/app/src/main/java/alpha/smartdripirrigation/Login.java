@@ -2,9 +2,11 @@ package alpha.smartdripirrigation;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
@@ -56,6 +58,19 @@ public class Login extends AppCompatActivity {
 
     }
 
+    public void msgdialog(String title,String msg){
+        AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
+
     public class RoverLogin extends AsyncTask<Void, Void, String> {
         @Override
         protected String doInBackground(Void... params) {
@@ -81,33 +96,35 @@ public class Login extends AppCompatActivity {
         protected void onPostExecute(String dec) {
             dialog.dismiss();
             if (dec != null) {
-                if (dec != "false") {
-                    JSONArray jsonArray = null;
+                if (!dec.equals("false")){
+
                     try {
-                        jsonArray = new JSONArray(dec);
+
+                        JSONArray jsonArray = new JSONArray(dec);
+                        if(jsonArray != null) {
+                            ArrayList<String> list = new ArrayList<String>();
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+
+                                list.add(jsonArray.getString(i));
+
+                            }
+                            if (list.get(1).equals(pass)) {
+
+                                Intent i = new Intent(Login.this, MainActivity.class);
+                                startActivity(i);
+                            } else {
+                                msgdialog("Wrong password", "Try to enter correct password");
+                            }
+                        }
+
                     } catch (JSONException e) {
                         e.printStackTrace();
-                    }
-                    try {
-                        ArrayList<String> list = new ArrayList<String>();
-                        for (int i = 0; i < jsonArray.length(); i++) {
-
-                            list.add(jsonArray.getString(i));
-
-                        }
-                        if (list.get(1).equals(pass)) {
-
-                            Intent i = new Intent(Login.this, MainActivity.class);
-                            startActivity(i);
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Invalid details", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
+                        msgdialog("Wrong credential", "Try to enter correct rover name ");
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(), "No such rover is available in our database", Toast.LENGTH_SHORT).show();
+                    msgdialog("Wrong Rover Name","No such rover is available in our database");
                 }
             }
         }
