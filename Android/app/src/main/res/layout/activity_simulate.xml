@@ -10,15 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.simulate">
 
-    <TextView
-        android:text="Rover ID:301705"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/left"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:id="@+id/textView2" />
+
 
     <Button
         android:text="@string/fetch"
@@ -70,7 +62,6 @@
         android:id="@+id/forward"
         android:background="@color/simulateObjectBackground"
         android:layout_marginTop="82dp"
-        android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/backward" />
 
     <ImageButton
@@ -82,5 +73,15 @@
         android:layout_marginTop="32dp"
         android:layout_below="@+id/fetch"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="@string/nextSegment"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:id="@+id/nextSegment"
+        android:background="@color/simulateObjectBackground"
+        android:textColor="@color/simulateObjectForeground"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
