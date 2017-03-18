@@ -10,16 +10,25 @@ const char *ssid = "sdi";
 const char *password = "";
 int status = WL_IDLE_STATUS;
 int input1=2,input2=0,input3=13,input4=12;
-
 WiFiServer server(80);
+const char* host = "cyberknights.in";
 
 void setup()
 {
    motor_init();
    delay(1000);
    Serial.begin(115200);
-   //Serial.println();
-   //Serial.print("Configuring rover header ...");
+   WiFi.begin("hello", "12345678");
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");  
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
    
    Serial.println();
    Serial.print("Configuring access point...");
@@ -119,6 +128,51 @@ float get_moisture(int VAL_PROBE,int PRECISION,int TOTAL_DELAY) {
         return (MOISTURE/PRECISION);             
     }
 
+String getPath(){
+  String line = "";
+  delay(5000);
+  Serial.print("connecting to ");
+  Serial.println(host);
+
+  WiFiClient client;
+  const int httpPort = 80;
+  if (!client.connect(host, httpPort)) {
+    Serial.println("connection failed");
+    return line;
+  }
+
+  // We now create a URI for the request
+  String url = "/api/sdi/getBlobContent.php?name=sample&segment=path";
+
+  Serial.print("Requesting URL: ");
+  Serial.println(url);
+
+  // This will send the request to the server
+  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
+               "Host: " + host + "\r\n" + 
+               "Connection: close\r\n\r\n");
+               
+  int timeout = millis() + 5000;
+  while (client.available() == 0) {
+    if (timeout - millis() < 0) {
+      Serial.println(">>> Client Timeout !");
+      client.stop();
+      return line;
+    }
+  }
+  while(client.available()) {
+    line = client.readStringUntil('\r');
+    Serial.print(line);
+  } 
+
+
+  
+
+  Serial.println();
+  Serial.println("closing connection");
+  return line;
+  }
+
 void loop()
 {
   WiFiClient client = server.available(); 
@@ -172,7 +226,12 @@ void loop()
   Serial.println(get_moisture(0,1,100));
   return;
   }
-    
+  else if(req.indexOf("value=6") != -1){
+while(1){
+       String path = getPath();
+       
+    }
+    }
   else {
     Serial.println("invalid request");
     client.stop();
@@ -180,6 +239,9 @@ void loop()
   }
    
   client.flush();
+
+
+
 
 }
 
