@@ -3,12 +3,14 @@ package alpha.smartdripirrigation;
 
 
 import android.content.BroadcastReceiver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +30,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -45,7 +48,7 @@ public class simulate extends AppCompatActivity {
     ImageButton up, down, left, right;
     Button fetch,end,nextSeg;
     StringBuilder path;
-
+    WifiManager wifiManager;
 
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -58,7 +61,7 @@ public class simulate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulate);
         path  = new StringBuilder();
-        WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         wifiManager.setWifiEnabled(true);
@@ -79,7 +82,7 @@ public class simulate extends AppCompatActivity {
         right = (ImageButton) findViewById(R.id.right);
         fetch = (Button) findViewById(R.id.fetch);
         end = (Button) findViewById(R.id.endSimulate);
-        nextSeg = (Button) findViewById(R.id.nextSegment)
+        nextSeg = (Button) findViewById(R.id.nextSegment);
 
 
         up.setOnClickListener(new View.OnClickListener() {
@@ -126,13 +129,45 @@ public class simulate extends AppCompatActivity {
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String value = "6";
-                path.append(value);
-                new addemptyTask().execute(value);
 
+                AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
+                alertDialog.setTitle("Alert");
+                alertDialog.setMessage("Do you want to end simulation?");
+                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                String value = "6";
+                                new addemptyTask().execute(value);
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
             }
         });
 
+        nextSeg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                count++;
+                AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
+                alertDialog.setTitle("Next Segment");
+                alertDialog.setMessage("Path has been ended for segment - "+String.valueOf(count));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+                path.append("\n");
+            }
+        });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
@@ -215,12 +250,40 @@ public class simulate extends AppCompatActivity {
 
         protected void onPostExecute(String token) {
             if(token.equals("6")){
-                Intent i = new Intent(simulate.this, MainActivity.class);
-                startActivity(i);
+                  wifiManager.disconnect();
+                  new storePath().execute(path.toString());
             }
         }
     }
 
+    public class storePath extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try
+            {
+                HttpClient httpclient = new DefaultHttpClient();
+
+                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/updateBlob.php?name=sample&segment=path&content="+strings[0]);
+                getRequest.setHeader("Content-Type", "application/json");
+                HttpResponse response = httpclient.execute(getRequest);
+                String responseString = EntityUtils.toString(response.getEntity());
+            }
+            catch (Exception e)
+            {
+                // Output the stack trace.
+                e.printStackTrace();
+            }
+            return "false" ;
+        }
+
+        protected void onPostExecute(String dec) {
+
+            Intent i = new Intent(simulate.this, MainActivity.class);
+            startActivity(i);
+
+        }
+    }
 
 
 }
