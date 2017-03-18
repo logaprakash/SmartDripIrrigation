@@ -1,6 +1,4 @@
 package alpha.smartdripirrigation;
-
-import com.microsoft.azure.storage.table.TableEntity;
 import com.microsoft.azure.storage.table.TableServiceEntity;
 
 /**
@@ -9,22 +7,18 @@ import com.microsoft.azure.storage.table.TableServiceEntity;
 
 public class rover extends TableServiceEntity {
 
-    private String password;
-    private String auth="1232nnds12";
+    public String password;
     public rover(){
     }
     public rover(String name,String pass){
-        this.password = pass;
-        this.rowKey = name;
-        this.partitionKey="public";
+        password = pass;
+        rowKey = name;
+        partitionKey="public";
     }
     public String getRoverName(){
         return rowKey;
     }
     public String getPass(){
         return password;
-    }
-    public String getAuth(){
-        return auth;
     }
 }

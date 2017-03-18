@@ -1,6 +1,7 @@
 package alpha.smartdripirrigation;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,13 +19,24 @@ import com.microsoft.azure.storage.table.CloudTable;
 import com.microsoft.azure.storage.table.CloudTableClient;
 import com.microsoft.azure.storage.table.TableOperation;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONException;
+
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Login extends Activity {
 
-    String name,pass;
+    String name="",pass="";
     EditText roverName,password;
     Button loginBtn;
+    ProgressDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +50,12 @@ public class Login extends Activity {
             public void onClick(View view) {
                 name = roverName.getText().toString();
                 pass = password.getText().toString();
-                new RoverLogin().execute();
 
+                if(!name.equals("")  && !pass.equals("")) {
+                    dialog = ProgressDialog.show(Login.this, "",
+                            "Logging in. Please wait...", true);
+                    new RoverLogin().execute();
+                }
             }
         });
 
@@ -49,25 +65,15 @@ public class Login extends Activity {
         @Override
         protected String doInBackground(Void... params) {
 
-                String storageConnectionString =
-                        "DefaultEndpointsProtocol=http;" +
-                                "AccountName=smartdripirrigation;" +
-                                "AccountKey=wQFS5WHHisI2wZNaonXUtvyRajMQtrB8iYUIK16fxW+bO8COxEdU+ZQKuQOViqIpXgVigFBLvR+/ge1rnfOyKA==";
-                try
+                    try
                 {
-                    // Retrieve storage account from connection-string.
-                    CloudStorageAccount storageAccount =
-                            CloudStorageAccount.parse(storageConnectionString);
-                    // Create the blob client.
-                    CloudBlobClient blobClient = storageAccount.createCloudBlobClient();
+                    HttpClient httpclient = new DefaultHttpClient();
 
-                    // Retrieve reference to a previously created container.
-                    CloudBlobContainer container = blobClient.getContainerReference("password");
-
-                    CloudBlockBlob blob = container.getBlockBlobReference(name);
-                    String temp = blob.downloadText();
-                    if(temp.equals(pass))
-                        return "true";
+                    HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/check.php?id="+name); // create an HTTP GET object
+                    getRequest.setHeader("Content-Type", "application/json");
+                    HttpResponse response = httpclient.execute(getRequest);
+                    String responseString = EntityUtils.toString(response.getEntity());
+                    return responseString;
                 }
                 catch (Exception e)
                 {
@@ -78,9 +84,36 @@ public class Login extends Activity {
         }
 
         protected void onPostExecute(String dec) {
-            if(dec=="true"){
-            Intent i = new Intent(Login.this, MainActivity.class);
-            startActivity(i);
+            dialog.dismiss();
+            if (dec != null) {
+                if (dec != "false") {
+                    JSONArray jsonArray = null;
+                    try {
+                        jsonArray = new JSONArray(dec);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        ArrayList<String> list = new ArrayList<String>();
+                        for (int i = 0; i < jsonArray.length(); i++) {
+
+                            list.add(jsonArray.getString(i));
+
+                        }
+                        if (list.get(1).equals(pass)) {
+
+                            Intent i = new Intent(Login.this, MainActivity.class);
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Invalid details", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "No such rover is available in our database", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

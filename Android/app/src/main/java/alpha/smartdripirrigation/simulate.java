@@ -3,6 +3,7 @@ package alpha.smartdripirrigation;
 
 
 import android.content.BroadcastReceiver;
+import android.content.Intent;
 import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
@@ -42,7 +43,10 @@ import java.net.URL;
 public class simulate extends AppCompatActivity {
     int count = 0;
     ImageButton up, down, left, right;
-    Button fetch;
+    Button fetch,end;
+    StringBuilder path;
+
+
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -53,6 +57,7 @@ public class simulate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulate);
+        path  = new StringBuilder();
         WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
         //Enable Back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,35 +78,57 @@ public class simulate extends AppCompatActivity {
         left = (ImageButton) findViewById(R.id.left);
         right = (ImageButton) findViewById(R.id.right);
         fetch = (Button) findViewById(R.id.fetch);
+        end = (Button) findViewById(R.id.endSimulate);
+
 
         up.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new addemptyTask().execute("1");
+                String value = "1";
+                path.append(value);
+                new addemptyTask().execute(value);
             }
         });
         down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new addemptyTask().execute("2");
+                String value = "2";
+                path.append(value);
+                new addemptyTask().execute(value);
             }
         });
         left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new addemptyTask().execute("3");
+                String value = "3";
+                path.append(value);
+                new addemptyTask().execute(value);
             }
         });
         right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new addemptyTask().execute("4");
+                String value = "4";
+                path.append(value);
+                new addemptyTask().execute(value);
             }
         });
         fetch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new addemptyTask().execute("5");
+                String value = "5";
+                path.append(value);
+                new addemptyTask().execute(value);
+            }
+        });
+
+        end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String value = "6";
+                path.append(value);
+                new addemptyTask().execute(value);
+
             }
         });
 
@@ -162,7 +189,7 @@ public class simulate extends AppCompatActivity {
     private class addemptyTask extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String... strings) {
-            String token = "";
+
 
                 try{
                     HttpClient httpclient = new DefaultHttpClient();
@@ -181,12 +208,15 @@ public class simulate extends AppCompatActivity {
                     printwriter.close();
                     Client.close();*/
 
-            return token;
+            return strings[0];
 
         }
 
         protected void onPostExecute(String token) {
-
+            if(token.equals("6")){
+                Intent i = new Intent(simulate.this, MainActivity.class);
+                startActivity(i);
+            }
         }
     }
 

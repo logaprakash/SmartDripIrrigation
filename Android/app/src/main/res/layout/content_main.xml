@@ -14,4 +14,23 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="alpha.smartdripirrigation.MainActivity">
 
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="63dp"
+        android:id="@+id/textView3" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignStart="@+id/textView3" />
 </RelativeLayout>
