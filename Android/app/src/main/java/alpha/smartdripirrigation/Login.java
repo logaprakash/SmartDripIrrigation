@@ -2,8 +2,11 @@ package alpha.smartdripirrigation;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -42,22 +45,34 @@ public class Login extends AppCompatActivity {
         password = (EditText)findViewById(R.id.password);
         loginBtn = (Button) findViewById(R.id.login);
 
+
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                name = roverName.getText().toString();
-                pass = password.getText().toString();
+                if(isNetworkAvailable()) {
+                    name = roverName.getText().toString();
+                    pass = password.getText().toString();
 
-                if(!name.equals("")  && !pass.equals("")) {
-                    dialog = ProgressDialog.show(Login.this, "",
-                            "Logging in. Please wait...", true);
-                    new RoverLogin().execute();
+                    if (!name.equals("") && !pass.equals("")) {
+                        dialog = ProgressDialog.show(Login.this, "",
+                                "Logging in. Please wait...", true);
+                        new RoverLogin().execute();
+                    }
                 }
+                else
+                    msgdialog("NO INTERNET","Check your internet connection!!!");
             }
         });
 
     }
 
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
     public void msgdialog(String title,String msg){
         AlertDialog alertDialog = new AlertDialog.Builder(Login.this).create();
         alertDialog.setTitle(title);
