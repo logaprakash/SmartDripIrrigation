@@ -14,11 +14,6 @@
     tools:showIn="@layout/app_bar_main"
     tools:context="alpha.smartdripirrigation.MainActivity">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-</LinearLayout>
     <TextView
         android:text="SEGMENT - 1"
         android:layout_margin="20dp"
@@ -75,5 +70,24 @@
         android:layout_alignEnd="@+id/seg2"
         android:layout_marginTop="44dp"
         android:id="@+id/refresh" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/refresh"
+        android:layout_alignStart="@+id/value2">
+
+        <Button
+            android:text="Go Now"
+            android:background="@color/btnBackground"
+            android:textColor="@color/btnTextColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/value2"
+            android:layout_alignEnd="@+id/seg2"
+            android:layout_marginTop="44dp"
+            android:id="@+id/goNow"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </RelativeLayout>
