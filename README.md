@@ -24,6 +24,7 @@
   <li>Chaos with four motors attached with wheels at each one - 1
   <li>Camera - 1
   <li>Solar powered batteries - 1 
+  <li>Servo Motors - 2
   
  <h2>Block Diagram</h2>
  ![Alt text](/blockDiagram.jpg "Block Diagram")
@@ -36,6 +37,7 @@
 <b><li> 30th Dec 2016 :</b> Wifi and Time header added (Time and WiFi functions - Tested OK) by Logaprakash Raju
 <b><li> 09th Mar 2017 :</b> Rover responding to the simulation from app (Tested OK) by Logaprakash Raju
 <b><li> 17th Mar 2017 :</b> Recieving path from cloud using HTTP Request (Tested OK) by Logaprakash Raju
+<b><li> 19th Mar 2017 :</b> Updating moisture value to cloud using HTTP Request (Tested OK) and Servo motor controls to make sensor to dip into soil and fetch moisture from soil (Tested Ok) by Logaprakash Raju
 
 <h3>Android:</h3>
 <b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
@@ -52,3 +54,4 @@
 <b><li> 14th Mar 2017 :</b> Changing whole UI and Login intregation by Logaprakash Raju 
 <b><li> 15th Mar 2017 :</b> Login module added by Logaprakash Raju
 <b><li> 18th Mar 2017 :</b> Live Feeds module added by Logaprakash Raju 
+<b><li> 19th Mar 2017 :</b> Update path online page added by Logaprakash Raju
