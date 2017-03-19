@@ -9,6 +9,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -19,14 +20,16 @@ import org.apache.http.util.EntityUtils;
 public class uploadPathOnline extends AppCompatActivity {
 
     Button upload;
+    TextView tv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_path_online);
         upload = (Button) findViewById(R.id.upload);
+        tv = (TextView) findViewById(R.id.sim_path);
         Bundle bundle = getIntent().getExtras();
         final String path = bundle.getString("path");
-
+        tv.setText("Simulated Path: "+ path);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

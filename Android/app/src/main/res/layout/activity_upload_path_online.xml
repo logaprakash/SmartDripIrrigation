@@ -12,11 +12,22 @@
 
     <Button
         android:text="Upload to cloud"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/upload"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Simulated Path:"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="112dp"
-        android:id="@+id/upload" />
+        android:textSize="18dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="39dp"
+        android:id="@+id/sim_path" />
 </RelativeLayout>
