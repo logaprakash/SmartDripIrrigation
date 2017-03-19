@@ -61,20 +61,9 @@ public class simulate extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_simulate);
         path  = new StringBuilder();
-        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-        //Enable Back button
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        wifiManager.setWifiEnabled(true);
-        WifiConfiguration wifiConfig = new WifiConfiguration();
 
-        wifiConfig.SSID = String.format("\"%s\"", "sdi");
-        wifiConfig.preSharedKey = String.format("\"%s\"", "");
-
-
-        int netId = wifiManager.addNetwork(wifiConfig);
-        wifiManager.disconnect();
-        wifiManager.enableNetwork(netId, true);
-        wifiManager.reconnect();
 
         up = (ImageButton) findViewById(R.id.forward);
         down = (ImageButton) findViewById(R.id.backward);
@@ -155,13 +144,38 @@ public class simulate extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 count++;
-                msgdialog("Next Segment","Path has been ended for segment - "+String.valueOf(count),0);
+                msgdialog("Next Segment","Path has been ended for segment - "+String.valueOf(count));
                 path.append("7");
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
+        alertDialog.setTitle("Alert");
+        alertDialog.setMessage("If your mobile data is turned on , please turn it off");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+                        wifiManager.setWifiEnabled(true);
+                        WifiConfiguration wifiConfig = new WifiConfiguration();
+
+                        wifiConfig.SSID = String.format("\"%s\"", "sdi");
+                        wifiConfig.preSharedKey = String.format("\"%s\"", "");
+
+
+                        int netId = wifiManager.addNetwork(wifiConfig);
+                        wifiManager.disconnect();
+                        wifiManager.enableNetwork(netId, true);
+                        wifiManager.reconnect();
+
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+
     }
 
 
@@ -213,17 +227,13 @@ public class simulate extends AppCompatActivity {
         client.disconnect();
     }
 
-    public void msgdialog(String title,String msg,final int dec){
+    public void msgdialog(String title,String msg){
         AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
         alertDialog.setTitle(title);
         alertDialog.setMessage(msg);
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        if(dec==1){
-                            Intent i = new Intent(simulate.this, MainActivity.class);
-                            startActivity(i);
-                        }
                         dialog.dismiss();
                     }
                 });
@@ -258,49 +268,15 @@ public class simulate extends AppCompatActivity {
         protected void onPostExecute(String token) {
             if(token.equals("6")){
                 wifiManager.disconnect();
-                AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
-                alertDialog.setTitle("Alert");
-                alertDialog.setMessage("Turn on mobile data and press ok !!!");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                new storePath().execute(path.toString());
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-
+                wifiManager.setWifiEnabled(false);
+                Intent i = new Intent(simulate.this, uploadPathOnline.class);
+                i.putExtra("path", path.toString());
+                startActivity(i);
             }
         }
     }
 
-    public class storePath extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... strings) {
 
-            try
-            {
-                HttpClient httpclient = new DefaultHttpClient();
-
-                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/updateBlob.php?name=sample&segment=path&content="+strings[0]);
-                getRequest.setHeader("Content-Type", "application/json");
-                HttpResponse response = httpclient.execute(getRequest);
-                String responseString = EntityUtils.toString(response.getEntity());
-            }
-            catch (Exception e)
-            {
-                // Output the stack trace.
-                e.printStackTrace();
-            }
-            return "false" ;
-        }
-
-        protected void onPostExecute(String dec) {
-
-             msgdialog("SUCCESS","Your simulated path has been stored",1);
-
-        }
-    }
 
 
 }

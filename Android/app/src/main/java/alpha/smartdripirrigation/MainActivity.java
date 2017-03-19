@@ -1,6 +1,7 @@
 package alpha.smartdripirrigation;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity
     ProgressDialog dialog;
     TextView seg1,seg2;
     String temp1="",temp2="";
-    Button refresh;
+    Button refresh,goNow;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +42,7 @@ public class MainActivity extends AppCompatActivity
         seg1 = (TextView)findViewById(R.id.value1);
         seg2 = (TextView)findViewById(R.id.value2);
         refresh = (Button) findViewById(R.id.refresh);
+        goNow = (Button) findViewById(R.id.goNow);
         dialog = ProgressDialog.show(MainActivity.this, "",
                 "Getting live feeds...", true);
         new getFeeds().execute("seg1");
@@ -60,6 +64,15 @@ public class MainActivity extends AppCompatActivity
                         "Getting live feeds...", true);
                 new getFeeds().execute("seg1");
                 new getFeeds().execute("seg2");
+            }
+        });
+
+        goNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog = ProgressDialog.show(MainActivity.this, "",
+                        "Turning on rover", true);
+                new changeMode().execute("on");
             }
         });
 
@@ -114,7 +127,18 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-
+    public void msgdialog(String title,String msg){
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle(title);
+        alertDialog.setMessage(msg);
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
+    }
 
     public class getFeeds extends AsyncTask<String, Void, String> {
         @Override
@@ -151,6 +175,32 @@ public class MainActivity extends AppCompatActivity
             if(!temp1.equals("")&& !temp2.equals(""))
                 dialog.dismiss();
 
+        }
+    }
+    public class changeMode extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... strings) {
+
+            try
+            {
+                HttpClient httpclient = new DefaultHttpClient();
+
+                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/updateBlob.php?name=sample&segment=switch&content="+strings[0]);
+                getRequest.setHeader("Content-Type", "application/json");
+                HttpResponse response = httpclient.execute(getRequest);
+                String responseString = EntityUtils.toString(response.getEntity());
+            }
+            catch (Exception e)
+            {
+                // Output the stack trace.
+                e.printStackTrace();
+            }
+            return "false" ;
+        }
+
+        protected void onPostExecute(String dec) {
+            dialog.dismiss();
+            msgdialog("MODE Changed","Rover is in action");
         }
     }
 }
