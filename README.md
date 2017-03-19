@@ -1,4 +1,4 @@
-#Smart Drip Irrigation using IOT 
+# Smart Drip Irrigation using IOT 
 
 <h2>Objective</h2>
    <p>The objective of the project is to over come the current methods of automation in drip irrigation of farms with even more cost and energy efficient system and also more user friendly at live feeds display</p>
