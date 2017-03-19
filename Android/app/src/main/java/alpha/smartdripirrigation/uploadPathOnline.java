@@ -1,11 +1,12 @@
 package alpha.smartdripirrigation;
 
-import android.app.Activity;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
@@ -15,7 +16,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
-public class uploadPathOnline extends Activity {
+public class uploadPathOnline extends AppCompatActivity {
 
     Button upload;
     @Override

@@ -12,7 +12,7 @@
     <string name="liveFeed">Live Feed</string>
     <string name="simulate">Simulate</string>
     <string name="login">Login</string>
-
+    <string name="updateOnline">Update Online</string>
     <string name="viewRover">View rovers</string>
     <string name="addRover">Add Rover</string>
     <string name="deleteRover">Delete Rover</string>
