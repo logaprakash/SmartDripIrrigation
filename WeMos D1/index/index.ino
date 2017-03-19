@@ -1,24 +1,37 @@
-/* Create a WiFi access point and provide a web server on it. */
-
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
+#include <Servo.h>   
+#include "blob.h"
 
-
-/* Set these to your desired credentials. */
-const char *ssid = "sdi";
-const char *password = "";
+const char* ssid     = "hello";
+const char* password = "12345678"; 
+const char* hotspot_ssid     = "sdi";
+const char* hotspot_password = ""; 
 int status = WL_IDLE_STATUS;
-int input1=2,input2=0,input3=13,input4=12;
-WiFiServer server(80);
-const char* host = "cyberknights.in";
 
-void setup()
-{
-   motor_init();
-   delay(1000);
-   Serial.begin(115200);
-   WiFi.begin("hello", "12345678");
+float value;
+Servo servo;  
+WiFiServer server(80);
+
+int input1=2,input2=0,input3=13,input4=12;
+
+void setup() {
+  motor_init();
+  delay(1000);
+  servo.attach(4);  
+  delay(1000);
+  servo.write(1);
+  delay(500);
+  Serial.begin(115200);
+  delay(10);
+
+  Serial.println();
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
@@ -29,22 +42,20 @@ void setup()
   Serial.println("WiFi connected");  
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
-   
-   Serial.println();
-   Serial.print("Configuring access point...");
-   WiFi.softAP(ssid);
-   IPAddress myIP = WiFi.softAPIP();
-   Serial.print("AP IP address: ");
-   Serial.println(myIP);
+  
+  delay(500);
+  
+  Serial.println();
+  Serial.print("Configuring access point...");
+  WiFi.softAP(hotspot_ssid);
+  IPAddress myIP = WiFi.softAPIP();
+  Serial.print("AP IP address: ");
+  Serial.println(myIP);
 
-   Serial.println("\nStarting server...");
-  // start the server:
+  Serial.println("\nStarting server...");
   server.begin();
   Serial.println("\nStarted server and waiting for client response...");
-  
 }
-
-
 void motor_init(){
    pinMode(input1,OUTPUT);
    pinMode(input2,OUTPUT);
@@ -118,6 +129,7 @@ void rest(int duration){
 }
 
 float get_moisture(int VAL_PROBE,int PRECISION,int TOTAL_DELAY) {
+ 
      float MOISTURE = 0;
        int i = 0;
        while(i<PRECISION){
@@ -125,59 +137,15 @@ float get_moisture(int VAL_PROBE,int PRECISION,int TOTAL_DELAY) {
         delay((TOTAL_DELAY/PRECISION));
         i++;
         }
+        servo.write(1);
         return (MOISTURE/PRECISION);             
     }
-
-String getPath(){
-  String line = "";
-  delay(5000);
-  Serial.print("connecting to ");
-  Serial.println(host);
-
-  WiFiClient client;
-  const int httpPort = 80;
-  if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
-    return line;
-  }
-
-  // We now create a URI for the request
-  String url = "/api/sdi/getBlobContent.php?name=sample&segment=path";
-
-  Serial.print("Requesting URL: ");
-  Serial.println(url);
-
-  // This will send the request to the server
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + host + "\r\n" + 
-               "Connection: close\r\n\r\n");
-               
-  int timeout = millis() + 5000;
-  while (client.available() == 0) {
-    if (timeout - millis() < 0) {
-      Serial.println(">>> Client Timeout !");
-      client.stop();
-      return line;
-    }
-  }
-  while(client.available()) {
-    line = client.readStringUntil('\r');
-    Serial.print(line);
-  } 
-
-
+int moisture_count =0;
+int simulate(){
   
-
-  Serial.println();
-  Serial.println("closing connection");
-  return line;
-  }
-
-void loop()
-{
-  WiFiClient client = server.available(); 
+   WiFiClient client = server.available(); 
   if (!client) {
-    return;
+    return 0;
   }
   
   // Wait until the client sends some data
@@ -196,53 +164,126 @@ void loop()
      Serial.println("Forward for 250 ms"); 
      forward(250);
      rest(1);
-     return;
+     return 0;
+     moisture_count =0;
   }
     
   else if (req.indexOf("value=2") != -1){
     Serial.println("Backward for 250 ms"); 
     backward(250);
     rest(1);
-    return;
+    return 0;
+    moisture_count =0;
     }
 
   else if (req.indexOf("value=3") != -1){
     Serial.println("Left for 250 ms"); 
     left(250);
     rest(1);
-    return;
+    return 0;
+    moisture_count =0;
     }
     
   else if (req.indexOf("value=4") != -1){
     Serial.println("Right for 250 ms"); 
     right(250);
     rest(1);
-    return;
+    return 0;
+    moisture_count = 0;
     }
     
  else if (req.indexOf("value=5") != -1){
+  
   rest(1);
-  Serial.println("Fetching for 250 ms"); 
-  Serial.println(get_moisture(0,1,100));
-  return;
+  if(moisture_count==0){
+    servo.write(90);
+    delay(1000);
+    Serial.println("Fetching for 1000 ms");       
+    value = get_moisture(0,4,3000);
+    delay(1000);
+    }
+    else
+    {
+    
+    }
+    
+           
+        
+  moisture_count = 1;
+  return 0;
   }
   else if(req.indexOf("value=6") != -1){
-while(1){
-       String path = getPath();
-       
-    }
+    moisture_count =0;
+    client.stop();
+     return 1;
     }
   else {
     Serial.println("invalid request");
     client.stop();
-    return;
+    return 0;
   }
    
   client.flush();
 
 
+  
+  }
 
+void loop() {
+  String MODE = getBlob("sample","path");
+  if(MODE.equals("")){
+  while(simulate()==0);
+  }
 
+while(1){
+  int count = 1;
+  String dec = getBlob("sample","switch");
+  if(dec.equals("on"))
+  {
+
+  String result = getBlob("sample","path");
+  for(int i =0 ; i<result.length();i++){
+       Serial.println( result.charAt(i) );
+       if(result.charAt(i) == '1')
+       {
+         Serial.println("Forward for 1000 ms"); 
+         forward(1000);
+         rest(1);
+       }
+       else if(result.charAt(i) == '2')
+       {
+         Serial.println("Backward for 1000 ms"); 
+         backward(1000);
+         rest(1);
+       }
+        else if(result.charAt(i) == '3')
+       {
+          Serial.println("Left for 1000 ms"); 
+          left(1000);
+          rest(1);
+       }
+        else if(result.charAt(i) == '4')
+       {
+          Serial.println("Right for 1000 ms"); 
+          right(1000);
+          rest(1);
+       }
+       else if(result.charAt(i) == '5'){
+        rest(1);
+        Serial.println("Fetching for 1000 ms"); 
+         servo.write(90);
+         delay(1000);
+         value = get_moisture(0,4,3000);         
+         delay(1000);
+       }
+       else if(result.charAt(i) == '7'){
+        
+        updateBlob("sample","seg"+String(count),String(value));
+        count++;
+        }
+    }
+    updateBlob("sample","switch","off");
+  }
 }
-
-
+  
+}
