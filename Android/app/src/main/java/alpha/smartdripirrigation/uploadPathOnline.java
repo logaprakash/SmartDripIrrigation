@@ -1,6 +1,7 @@
 package alpha.smartdripirrigation;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -19,6 +20,7 @@ import org.apache.http.util.EntityUtils;
 
 public class uploadPathOnline extends AppCompatActivity {
 
+    ProgressDialog pdialog;
     Button upload;
     TextView tv;
     @Override
@@ -33,6 +35,8 @@ public class uploadPathOnline extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pdialog = ProgressDialog.show(uploadPathOnline.this, "",
+                        "Uploading path...", true);
                 new storePath().execute(path);
             }
         });
@@ -76,9 +80,9 @@ public class uploadPathOnline extends AppCompatActivity {
         }
 
         protected void onPostExecute(String dec) {
-
+            pdialog.dismiss();
             msgdialog("SUCCESS","Your simulated path has been stored");
-
         }
     }
+
 }
