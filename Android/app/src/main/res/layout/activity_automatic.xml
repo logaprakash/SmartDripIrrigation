@@ -10,16 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.automatic">
 
-    <TimePicker
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_height="wrap_content"
-        android:id="@+id/timePicker"
-        android:layout_marginTop="18dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
     <Button
         android:text="Set automatic"
         android:layout_width="wrap_content"
@@ -29,4 +19,11 @@
         android:id="@+id/set_automatic"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
+
+    <TimePicker
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/timePicker"
+        android:layout_alignBottom="@+id/set_automatic"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
