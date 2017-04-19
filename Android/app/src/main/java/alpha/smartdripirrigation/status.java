@@ -22,7 +22,7 @@ public class status extends AppCompatActivity {
         dialog = ProgressDialog.show(status.this, "",
                 "Getting segment status...", true);
         new DownloadImageTask((ImageView) findViewById(R.id.imgview))
-                .execute("http://smartdripirrigation.blob.core.windows.net/sam/work1.jpg");
+                .execute("http://smartdripirrigation.blob.core.windows.net/sample/crop1.jpg");
 
     }
 
@@ -55,7 +55,7 @@ public class status extends AppCompatActivity {
                 int[] pixels = new int[length];
                 result.getPixels(pixels, 0, width, 0, 0, width, height);
                 for (int i = 0; i < pixels.length; i++) {
-                        if ((pixels[i] & 0x00FFFFFF) == 0)
+                        if ((pixels[i] & 0x00FFFFFF) < 10)
                             count++;
                 }
                 Toast.makeText(getApplicationContext(), String.valueOf(count), Toast.LENGTH_LONG).show();

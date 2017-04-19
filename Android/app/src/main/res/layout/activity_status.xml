@@ -12,11 +12,11 @@
     tools:context="alpha.smartdripirrigation.status">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
         app:srcCompat="@color/btnTextColor"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="120dp"
         android:id="@+id/imgview"
+        android:layout_marginTop="13dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 </RelativeLayout>
