@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     ProgressDialog dialog;
     TextView seg1,seg2;
     String temp1="",temp2="";
-    Button refresh,goNow,status;
+    Button refresh,goNow,status,automatic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,14 @@ public class MainActivity extends AppCompatActivity
         refresh = (Button) findViewById(R.id.refresh);
         goNow = (Button) findViewById(R.id.goNow);
         status = (Button)findViewById(R.id.status1);
-
+        automatic = (Button)findViewById(R.id.automatic);
+        automatic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, automatic.class);
+                startActivity(i);
+            }
+        });
         status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
