@@ -1,6 +1,5 @@
 package alpha.smartdripirrigation;
 
-
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;

@@ -18,7 +18,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/liveFeed"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".simulate"
             android:label="@string/simulate" />
@@ -36,9 +36,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".uploadPathOnline"
-            android:label="@string/updateOnline"
-            ></activity>
+        <activity
+            android:name=".uploadPathOnline"
+            android:label="@string/updateOnline" />
+        <activity android:name=".automatic"
+            android:label="@string/automatic"></activity>
     </application>
 
 </manifest>
