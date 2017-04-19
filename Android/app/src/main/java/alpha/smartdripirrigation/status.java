@@ -4,9 +4,11 @@ import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -19,13 +21,28 @@ public class status extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
+
+
+        ActionBar bar = getSupportActionBar();
+
+        bar.setDisplayHomeAsUpEnabled(true);
+
         dialog = ProgressDialog.show(status.this, "",
                 "Getting segment status...", true);
         new DownloadImageTask((ImageView) findViewById(R.id.imgview))
                 .execute("http://smartdripirrigation.blob.core.windows.net/sample/crop1.jpg");
 
     }
-
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
 
