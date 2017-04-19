@@ -39,8 +39,12 @@
         <activity
             android:name=".uploadPathOnline"
             android:label="@string/updateOnline" />
-        <activity android:name=".automatic"
-            android:label="@string/automatic"></activity>
+        <activity
+            android:name=".automatic"
+            android:label="@string/automatic" />
+        <activity
+            android:name=".status"
+            android:label="@string/status"/>
     </application>
 
 </manifest>

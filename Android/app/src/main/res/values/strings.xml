@@ -18,6 +18,7 @@
     <string name="deleteRover">Delete Rover</string>
     <string name="logOut">Log Out</string>
     <string name="automatic">Automatic</string>
+    <string name="status">Status</string>
 
     <!--simulate-->
     <string name="fetch">Fetch</string>
