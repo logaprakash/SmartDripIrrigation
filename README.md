@@ -55,3 +55,6 @@
 <b><li> 15th Mar 2017 :</b> Login module added by Logaprakash Raju
 <b><li> 18th Mar 2017 :</b> Live Feeds module added by Logaprakash Raju 
 <b><li> 19th Mar 2017 :</b> Update path online page added by Logaprakash Raju
+<b><li> 10th Apr 2017 :</b> UI for automatic mode added by Logaprakash Raju
+<b><li> 18th Apr 2017 :</b> Fetching Image from URL added by Logaprakash Raju
+<b><li> 19th Apr 2017 :</b> Processing Image from URL added by Logaprakash Raju
