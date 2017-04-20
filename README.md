@@ -38,6 +38,7 @@
 <b><li> 09th Mar 2017 :</b> Rover responding to the simulation from app (Tested OK) by Logaprakash Raju
 <b><li> 17th Mar 2017 :</b> Recieving path from cloud using HTTP Request (Tested OK) by Logaprakash Raju
 <b><li> 19th Mar 2017 :</b> Updating moisture value to cloud using HTTP Request (Tested OK) and Servo motor controls to make sensor to dip into soil and fetch moisture from soil (Tested Ok) by Logaprakash Raju
+<b><li> 21th Apr 2017 :</b> CheckTime function added and automatic mode module completed (Tested OK) by Logaprakash Raju
 
 <h3>Android:</h3>
 <b><li> 31th Dec 2016 :</b> Android bulid created with minSDK (Kikat 4.4) by Logaprakash Raju
