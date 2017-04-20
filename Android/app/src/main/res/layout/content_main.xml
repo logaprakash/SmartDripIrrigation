@@ -66,51 +66,7 @@
         android:layout_below="@+id/refresh"
         android:layout_alignStart="@+id/value2">
 
-        <Button
-            android:text="Go Now"
-            android:background="@color/btnBackground"
-            android:textColor="@color/btnTextColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/value2"
-            android:layout_alignEnd="@+id/seg2"
-            android:layout_marginTop="44dp"
-            android:id="@+id/goNow"
-            android:layout_weight="1" />
     </LinearLayout>
-
-    <Button
-        android:text="Status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/btnBackground"
-        android:textColor="@color/btnTextColor"
-        android:id="@+id/status1"
-        android:layout_alignBaseline="@+id/seg1"
-        android:layout_alignBottom="@+id/seg1"
-        android:layout_toEndOf="@+id/seg1" />
-
-    <Button
-        android:text="Status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/btnBackground"
-        android:textColor="@color/btnTextColor"
-        android:id="@+id/status2"
-        android:layout_alignBaseline="@+id/seg2"
-        android:layout_alignBottom="@+id/seg2"
-        android:layout_alignStart="@+id/status1" />
-
-    <Button
-        android:text="Automatic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@color/btnBackground"
-        android:textColor="@color/btnTextColor"
-        android:layout_alignTop="@+id/refresh"
-        android:id="@+id/automatic"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/seg2" />
 
     <Button
         android:text="Refresh"
@@ -118,9 +74,10 @@
         android:textColor="@color/btnTextColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="68dp"
         android:id="@+id/refresh"
         android:layout_below="@+id/value2"
-        android:layout_alignEnd="@+id/value2" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
