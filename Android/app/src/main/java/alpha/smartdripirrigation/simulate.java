@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
@@ -154,7 +156,21 @@ public class simulate extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
         dialog = ProgressDialog.show(simulate.this, "",
                 "Making rover ready for simulation...", true);
-        new updateSwitch().execute("simulate");
+        wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+        WifiConfiguration wifiConfig = new WifiConfiguration();
+
+        wifiConfig.SSID = String.format("\"%s\"", "sdi");
+        wifiConfig.preSharedKey = String.format("\"%s\"", "");
+
+
+        int netId = wifiManager.addNetwork(wifiConfig);
+        wifiManager.disconnect();
+        wifiManager.enableNetwork(netId, true);
+        wifiManager.reconnect();
+
+        if(wifiManager.isWifiEnabled())
+            dialog.dismiss();
 
     }
 
@@ -256,55 +272,7 @@ public class simulate extends AppCompatActivity {
         }
     }
 
-    public class updateSwitch extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... strings) {
 
-            try
-            {
-                HttpClient httpclient = new DefaultHttpClient();
-
-                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/updateBlob.php?name=sample&segment=switch&content="+strings[0]);
-                getRequest.setHeader("Content-Type", "application/json");
-                HttpResponse response = httpclient.execute(getRequest);
-                String responseString = EntityUtils.toString(response.getEntity());
-            }
-            catch (Exception e)
-            {
-                // Output the stack trace.
-                e.printStackTrace();
-            }
-            return "false" ;
-        }
-
-        protected void onPostExecute(String dec) {
-            dialog.dismiss();
-            AlertDialog alertDialog = new AlertDialog.Builder(simulate.this).create();
-            alertDialog.setTitle("Alert");
-            alertDialog.setMessage("If your mobile data is turned on , please turn it off");
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
-                            wifiManager.setWifiEnabled(true);
-                            WifiConfiguration wifiConfig = new WifiConfiguration();
-
-                            wifiConfig.SSID = String.format("\"%s\"", "sdi");
-                            wifiConfig.preSharedKey = String.format("\"%s\"", "");
-
-
-                            int netId = wifiManager.addNetwork(wifiConfig);
-                            wifiManager.disconnect();
-                            wifiManager.enableNetwork(netId, true);
-                            wifiManager.reconnect();
-
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-
-        }
-    }
 
 
 }
