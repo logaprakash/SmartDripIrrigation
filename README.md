@@ -58,3 +58,4 @@
 <b><li> 10th Apr 2017 :</b> UI for automatic mode added by Logaprakash Raju
 <b><li> 18th Apr 2017 :</b> Fetching Image from URL added by Logaprakash Raju
 <b><li> 19th Apr 2017 :</b> Processing Image from URL added by Logaprakash Raju
+<b><li> 20th Apr 2017 :</b> Modes has been separated as separate module added by Logaprakash Raju
