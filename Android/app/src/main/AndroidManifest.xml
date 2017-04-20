@@ -44,7 +44,10 @@
             android:label="@string/automatic" />
         <activity
             android:name=".status"
-            android:label="@string/status"/>
+            android:label="@string/status" />
+        <activity
+            android:name=".modes"
+            android:label="@string/modes"></activity>
     </application>
 
 </manifest>
