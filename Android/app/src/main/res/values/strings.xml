@@ -19,7 +19,7 @@
     <string name="logOut">Log Out</string>
     <string name="automatic">Automatic</string>
     <string name="status">Status</string>
-
+    <string name="modes">Modes</string>
     <!--simulate-->
     <string name="fetch">Fetch</string>
     <string name="endSimulate">End Simulate</string>
