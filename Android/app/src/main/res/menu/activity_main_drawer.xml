@@ -7,9 +7,17 @@
                 android:icon="@drawable/live_feed"
                 android:title="@string/liveFeed" />
             <item
+                android:id="@+id/roverModes"
+                android:icon="@drawable/stats"
+                android:title="@string/modes" />
+            <item
             android:id="@+id/simulate"
             android:icon="@drawable/simulate"
             android:title="@string/simulate" />
+            <item
+                android:id="@+id/stats"
+                android:icon="@drawable/stats"
+                android:title="@string/status" />
 
         </menu>
     </item>
