@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
     ProgressDialog dialog;
     TextView seg1,seg2;
     String temp1="",temp2="";
-    Button refresh,goNow,status,automatic;
+    Button refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,23 +42,9 @@ public class MainActivity extends AppCompatActivity
         seg1 = (TextView)findViewById(R.id.value1);
         seg2 = (TextView)findViewById(R.id.value2);
         refresh = (Button) findViewById(R.id.refresh);
-        goNow = (Button) findViewById(R.id.goNow);
-        status = (Button)findViewById(R.id.status1);
-        automatic = (Button)findViewById(R.id.automatic);
-        automatic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, automatic.class);
-                startActivity(i);
-            }
-        });
-        status.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, status.class);
-                startActivity(i);
-            }
-        });
+
+
+
 
         dialog = ProgressDialog.show(MainActivity.this, "",
                 "Getting live feeds...", true);
@@ -84,14 +70,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        goNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog = ProgressDialog.show(MainActivity.this, "",
-                        "Turning on rover", true);
-                new changeMode().execute("on");
-            }
-        });
+
 
     }
 
@@ -137,6 +116,14 @@ public class MainActivity extends AppCompatActivity
         }
         else if(id == R.id.logOut){
             Intent i = new Intent(MainActivity.this, Login.class);
+            startActivity(i);
+        }
+        else if(id == R.id.stats){
+            Intent i = new Intent(MainActivity.this, status.class);
+            startActivity(i);
+        }
+        else if(id == R.id.roverModes){
+            Intent i = new Intent(MainActivity.this, modes.class);
             startActivity(i);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -194,30 +181,5 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
-    public class changeMode extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... strings) {
 
-            try
-            {
-                HttpClient httpclient = new DefaultHttpClient();
-
-                HttpGet getRequest = new HttpGet("http://cyberknights.in/api/sdi/updateBlob.php?name=sample&segment=switch&content="+strings[0]);
-                getRequest.setHeader("Content-Type", "application/json");
-                HttpResponse response = httpclient.execute(getRequest);
-                String responseString = EntityUtils.toString(response.getEntity());
-            }
-            catch (Exception e)
-            {
-                // Output the stack trace.
-                e.printStackTrace();
-            }
-            return "false" ;
-        }
-
-        protected void onPostExecute(String dec) {
-            dialog.dismiss();
-            msgdialog("MODE Changed","Rover is in action");
-        }
-    }
 }
