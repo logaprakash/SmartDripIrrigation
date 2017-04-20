@@ -11,22 +11,56 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="alpha.smartdripirrigation.status">
 
+    <TextView
+        android:text="Recent Image of the segment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/title"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:text="Status: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="43dp"
+        android:id="@+id/result"
+        android:textSize="20sp"
+        android:layout_below="@+id/imgview"
+        android:layout_alignParentStart="true" />
+
     <ImageView
         android:layout_width="400dp"
         android:layout_height="200dp"
         app:srcCompat="@color/btnTextColor"
         android:id="@+id/imgview"
-        android:layout_marginTop="13dp"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/title"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="TextView"
+    <Button
+        android:text="Segment-1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imgview"
+        android:layout_below="@+id/result"
         android:layout_alignParentStart="true"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
         android:layout_marginStart="29dp"
-        android:layout_marginTop="44dp"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="26dp"
+        android:id="@+id/seg1btn" />
+
+    <Button
+        android:text="Segment-2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/seg1btn"
+        android:background="@color/btnBackground"
+        android:textColor="@color/btnTextColor"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="43dp"
+        android:id="@+id/seg2btn" />
 </RelativeLayout>
