@@ -60,7 +60,9 @@ public class modes extends AppCompatActivity {
         simulate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                dialog = ProgressDialog.show(modes.this, "",
+                        "Making rover ready for simulation", true);
+                new changeMode().execute("simulate");
             }
         });
     }
@@ -115,7 +117,15 @@ public class modes extends AppCompatActivity {
         protected void onPostExecute(String dec) {
 
                 if(!dec.equals("false"))
-                    currentMode.append(dec);
+                {
+                    if(dec.equals("automatic"))
+                        currentMode.append("Automatic mode");
+                    else if(dec.equals("simulate"))
+                        currentMode.append("Simulate mode");
+                    else
+                        currentMode.append("Manual mode");
+                }
+
 
                 dialog.dismiss();
 
