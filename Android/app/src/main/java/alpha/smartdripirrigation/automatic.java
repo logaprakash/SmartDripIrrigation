@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -41,6 +42,8 @@ public class automatic extends AppCompatActivity {
         setAutomatic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dialog = ProgressDialog.show(automatic.this, "",
+                        "Setting rover for automatic mode ...", true);
                 new update().execute("switch","automatic","0");
             }
         });
@@ -99,7 +102,8 @@ public class automatic extends AppCompatActivity {
             else {
                 DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
                 Date date = new Date();
-                new update().execute("time",String.valueOf(date)+"\n"+String.valueOf(tpicker.getCurrentHour())+"\n"+(String.valueOf(tpicker.getCurrentMinute())), "1");
+                String temp = dateFormat.format(date) +" "+String.valueOf(tpicker.getCurrentHour())+" "+(String.valueOf(tpicker.getCurrentMinute()));
+                new update().execute("time",temp, "1");
             }
         }
     }
