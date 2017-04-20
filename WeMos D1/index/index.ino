@@ -229,19 +229,9 @@ int simulate(){
   
   }
 
-void loop() {
-  String MODE = getBlob("sample","path");
-  if(MODE.equals("")){
-  while(simulate()==0);
-  }
-
-while(1){
+void execute(){
   int count = 1;
-  String dec = getBlob("sample","switch");
-  if(dec.equals("on"))
-  {
-
-  String result = getBlob("sample","path");
+    String result = getBlob("sample","path");
   for(int i =0 ; i<result.length();i++){
        Serial.println( result.charAt(i) );
        if(result.charAt(i) == '1')
@@ -282,7 +272,35 @@ while(1){
         count++;
         }
     }
+  }
+
+void loop() {
+  String MODE = getBlob("sample","path");
+  if(MODE.equals("")){
+  while(simulate()==0);
+  }
+
+while(1){
+  
+  String dec = getBlob("sample","switch");
+  if(dec.equals("on"))
+  {
+    execute();
     updateBlob("sample","switch","off");
+  }
+  else if(dec.equals("automatic"))
+  {
+    String dec = getBlob("sample","time");
+    Serial.println(dec);  
+    String temp = checkTime(dec);
+    if(!temp.equals("false")){
+         execute();
+         updateBlob("sample","time",temp);
+      }
+  }
+  else if(dec.equals("simulate"))
+  {
+    while(simulate()==0);
   }
 }
   
